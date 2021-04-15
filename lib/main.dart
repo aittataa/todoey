@@ -1,7 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey/constant/constant.dart';
 import 'package:todoey/provider/task_provider.dart';
@@ -58,7 +57,6 @@ class ToDoApp extends StatelessWidget {
             curve: Curves.linearToEaseOut,
             backgroundColor: backColor,
             splashTransition: SplashTransition.fadeTransition,
-            pageTransitionType: PageTransitionType.fade,
             animationDuration: duration,
             splashIconSize: double.infinity,
           ),
