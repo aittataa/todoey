@@ -47,7 +47,7 @@ class ToDoApp extends StatelessWidget {
                   child: Text(
                     "To-Do List",
                     style: TextStyle(
-                      color: darkTextColor,
+                      color: Colors.black54,
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),

@@ -15,7 +15,7 @@ class TasksManager extends StatefulWidget {
 class _TasksManagerState extends State<TasksManager> {
   @override
   void initState() {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: transparentColor));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     super.initState();
   }
 
@@ -27,20 +27,16 @@ class _TasksManagerState extends State<TasksManager> {
         return Scaffold(
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              showModalBottomSheet(
+              showCupertinoModalPopup(
+                barrierColor: Colors.black54,
                 context: context,
-                builder: (context) => NewTask(),
-                backgroundColor: backColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25),
-                  ),
-                ),
+                builder: (context) {
+                  return NewTask();
+                },
               );
             },
             backgroundColor: mainColor,
-            foregroundColor: backColor,
+            foregroundColor: Colors.white,
             child: Icon(
               CupertinoIcons.add,
               size: 32,
@@ -56,7 +52,7 @@ class _TasksManagerState extends State<TasksManager> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       CircleAvatar(
-                        backgroundColor: backColor,
+                        backgroundColor: Colors.white,
                         radius: 32,
                         child: Icon(
                           Icons.menu_open,
@@ -69,7 +65,7 @@ class _TasksManagerState extends State<TasksManager> {
                         child: Text(
                           "$appTitle",
                           style: TextStyle(
-                            color: lightTextColor,
+                            color: Colors.white,
                             fontSize: 56,
                             fontWeight: FontWeight.w900,
                           ),
@@ -78,7 +74,7 @@ class _TasksManagerState extends State<TasksManager> {
                       Text(
                         "${taskProvider.tasksList.length} Tasks",
                         style: TextStyle(
-                          color: lightTextColor,
+                          color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),

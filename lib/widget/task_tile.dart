@@ -17,7 +17,7 @@ class TaskTile extends StatelessWidget {
         title: Text(
           "${task.title}",
           style: TextStyle(
-            color: task.status ? textColor : darkTextColor,
+            color: task.status ? Colors.black38 : Colors.black54,
             fontWeight: FontWeight.w900,
             fontSize: 20,
             decoration: task.status ? TextDecoration.lineThrough : null,
@@ -26,7 +26,7 @@ class TaskTile extends StatelessWidget {
         subtitle: Text(
           "${dateShape(task.date)}",
           style: TextStyle(
-            color: task.status ? textColor : darkTextColor,
+            color: task.status ? Colors.black26 : Colors.black45,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -41,7 +41,7 @@ class TaskTile extends StatelessWidget {
       secondaryActions: [
         IconSlideAction(
           onTap: onTap,
-          color: transparentColor,
+          color: Colors.transparent,
           foregroundColor: mainColor,
           icon: Icons.delete,
         ),
