@@ -4,22 +4,23 @@ description: To-Do List App
 environment: 
   sdk: '>=2.7.0 <3.0.0'
 
-dependencies:
+dependencies: 
   get: 4.6.1
   cupertino_icons: ^1.0.2
   sqflite: ^2.0.0+3
   flutter_spinkit: ^5.0.0
   animated_splash_screen: ^1.0.1+2
   intl: ^0.17.0
-  flutter:
+  google_fonts: 2.2.0
+  flutter: 
     sdk: flutter
 
 dev_dependencies: 
   flutter_test: 
     sdk: flutter
 
-flutter:
-  uses-material-design: true
-  assets:
+flutter: 
+  assets: 
     - assets/icons/
+  uses-material-design: true
 
