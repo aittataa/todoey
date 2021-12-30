@@ -1,4 +1,4 @@
-package com.aittataa.todoey;
+package com.to_do_list.to_do_list;
 
 import io.flutter.embedding.android.FlutterActivity;
 
