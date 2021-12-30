@@ -6,7 +6,7 @@ class TaskProvider extends ChangeNotifier {
   List<Task> tasksList = [];
 
   void get getNoteList async {
-    tasksList = await DatabaseHelper.getAllTasks;
+    tasksList = await DatabaseHelper.getTasks;
     notifyListeners();
   }
 

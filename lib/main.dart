@@ -6,7 +6,11 @@ import 'package:todoey/constant/constant.dart';
 import 'package:todoey/provider/task_provider.dart';
 import 'package:todoey/screens/tasks_manager.dart';
 
-void main() => runApp(ToDoApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies;
+  runApp(ToDoApp());
+}
 
 class ToDoApp extends StatelessWidget {
   @override
@@ -14,11 +18,11 @@ class ToDoApp extends StatelessWidget {
     return ChangeNotifierProvider<TaskProvider>(
       create: (context) => TaskProvider(),
       builder: (context, child) {
-        TaskProvider taskProvider = TaskProvider();
-        taskProvider.getNoteList;
+        //TaskProvider taskProvider = TaskProvider();
+        //taskProvider.getNoteList;
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: "$appTitle",
+          title: appTitle,
           color: mainColor,
           theme: ThemeData.light().copyWith(
             primaryColor: mainColor,
@@ -44,7 +48,7 @@ class ToDoApp extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Text(
-                    "To-Do List",
+                    appDesc,
                     style: TextStyle(
                       color: Colors.black54,
                       fontSize: 25,
@@ -55,7 +59,7 @@ class ToDoApp extends StatelessWidget {
               ],
             ),
             curve: Curves.linearToEaseOut,
-            backgroundColor: backColor,
+            backgroundColor: backgroundColor,
             splashTransition: SplashTransition.fadeTransition,
             animationDuration: duration,
             splashIconSize: double.infinity,

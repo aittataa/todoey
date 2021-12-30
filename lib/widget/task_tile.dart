@@ -31,9 +31,9 @@ class TaskTile extends StatelessWidget {
           ),
         ),
         trailing: Checkbox(
+          onChanged: onChanged,
           activeColor: mainColor,
           value: task.status,
-          onChanged: onChanged,
         ),
       ),
       actionPane: SlidableDrawerActionPane(),
