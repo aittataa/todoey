@@ -5,28 +5,31 @@ import 'package:todoey/helper/task_helper.dart';
 class TaskProvider extends ChangeNotifier {
   List<Task> tasksList = [];
 
-  void get getNoteList async {
+  get getNoteList async {
     tasksList = await DatabaseHelper.getTasks;
     notifyListeners();
   }
 
-  void addNewTask(String taskValue) {
-    Task task = Task(title: taskValue);
-    DatabaseHelper.insertTask(task);
+  addNewTask(String value) async {
+    Task task = Task(title: value);
+    final response = await DatabaseHelper.insertTask(task);
     getNoteList;
     notifyListeners();
+    return response;
   }
 
-  void updateTask(Task task) {
+  updateTask(Task task) async {
     task.updateTaskState();
-    DatabaseHelper.updateTask(task);
+    final response = await DatabaseHelper.updateTask(task);
     getNoteList;
     notifyListeners();
+    return response;
   }
 
-  void deleteTask(int id) {
-    DatabaseHelper.deleteTask(id);
+  deleteTask(int id) async {
+    final response = await DatabaseHelper.deleteTask(id);
     getNoteList;
     notifyListeners();
+    return response;
   }
 }

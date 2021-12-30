@@ -3,7 +3,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:todoey/classes/task.dart';
 
 class DatabaseHelper {
-  //static Database _myDataBase;
   static const String _db_name = "todoey.db";
   static const String _tbl_tasks = "tasks";
   static const String _id_task = "id";
@@ -39,7 +38,7 @@ class DatabaseHelper {
 
   static insertTask(Task task) async {
     final db = await _database;
-    final response = db.insert(
+    final response = await db.insert(
       _tbl_tasks,
       task.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -49,7 +48,7 @@ class DatabaseHelper {
 
   static updateTask(Task task) async {
     final db = await _database;
-    final response = db.update(
+    final response = await db.update(
       _tbl_tasks,
       task.toMap(),
       where: "$_id_task = ?",

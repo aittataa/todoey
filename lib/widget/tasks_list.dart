@@ -15,11 +15,15 @@ class TasksList extends StatelessWidget {
           padding: EdgeInsets.all(5),
           itemCount: taskProvider.tasksList.length,
           itemBuilder: (context, index) {
-            Task task = taskProvider.tasksList[index];
+            final Task task = taskProvider.tasksList[index];
             return TaskTile(
               task: task,
               onChanged: (value) => taskProvider.updateTask(task),
-              onTap: () => taskProvider.deleteTask(task.id),
+              onDismissed: (DismissDirection direction) async {
+                final data = await taskProvider.deleteTask(task.id);
+                print(data);
+              },
+              //onTap: () => taskProvider.deleteTask(task.id),
             );
           },
         );
