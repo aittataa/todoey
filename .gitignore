@@ -19,3 +19,8 @@ doc/api/
 *.js_
 *.js.deps
 *.js.map
+
+/details.txt
+/android/app/debug
+/android/app/profile
+/android/app/release

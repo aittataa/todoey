@@ -17,6 +17,8 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/app/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
+      <excludeFolder url="file://$MODULE_DIR$/app/src/main/java/io" />
+      <excludeFolder url="file://$MODULE_DIR$/.gradle" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
