@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 const String appTitle = "Todoey";
 const String appDesc = "To-Do List";
 
-dateShape(DateTime date) => DateFormat('MMM dd, HH:mm').format(date);
+dateShape(DateTime date) => DateFormat('MMM/dd/yyyy, HH:mm').format(date);
 
 get configureDependencies {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
