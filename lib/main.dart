@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:to_do_list/app/modules/home/models/collection.dart';
 
 import 'app/config/functions/app_function.dart';
 import 'app/config/messages/app_message.dart';
 import 'app/config/themes/app_theme.dart';
 import 'app/modules/home/views/home_view.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   AppFunction.configureDependencies;
+  await Hive.initFlutter();
+  Hive.registerAdapter(CollectionAdapter());
+  await Hive.openBox<Collection>("collections");
   runApp(ToDoList());
 }
 
@@ -21,8 +26,6 @@ class ToDoList extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: AppMessage.appTitle,
       theme: AppTheme.themeData,
-      // getPages: AppPages.routes,
-      // initialRoute: AppPages.INITIAL,
       home: HomeView(),
     );
   }

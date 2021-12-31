@@ -10,8 +10,8 @@ class HomeView extends StatelessWidget {
     return Material(
       child: PageView(
         children: [
-          HomePage(),
-          DetailsPage(),
+          HomePage(controller: controller),
+          DetailsPage(controller: controller),
         ],
       ),
     );
@@ -19,7 +19,8 @@ class HomeView extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final HomeController controller;
+  const HomePage({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,8 @@ class HomePage extends StatelessWidget {
 }
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({Key? key}) : super(key: key);
+  final HomeController controller;
+  const DetailsPage({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
