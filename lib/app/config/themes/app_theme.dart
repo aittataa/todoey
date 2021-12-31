@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   AppTheme._();
@@ -27,7 +26,7 @@ class AppTheme {
   static const Color primaryTextColor = Color(0xFF211551);
   static const Color secondaryTextColor = Color(0xFF86829D);
 
-  static ThemeData themeData(context) {
+  static ThemeData get themeData {
     return ThemeData(
       scaffoldBackgroundColor: backgroundColor,
       primaryColor: backgroundColor,
@@ -42,7 +41,7 @@ class AppTheme {
           fontSize: 20,
         ),
       ),
-      textTheme: GoogleFonts.nunitoSansTextTheme(Theme.of(context).textTheme),
+      //textTheme: GoogleFonts.nunitoSansTextTheme(Theme.of(context).textTheme),
     );
   }
 }
