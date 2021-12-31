@@ -13,7 +13,7 @@ void main() async {
   AppFunction.configureDependencies;
   await Hive.initFlutter();
   Hive.registerAdapter(CollectionAdapter());
-  await Hive.openBox<Collection>("collections");
+  await Hive.openBox<Collection>(AppMessage.collectionsAssets);
   runApp(ToDoList());
 }
 

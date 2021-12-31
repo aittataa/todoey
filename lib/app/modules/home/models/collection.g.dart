@@ -17,7 +17,6 @@ class CollectionAdapter extends TypeAdapter<Collection> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Collection(
-      id: fields[0] as int?,
       title: fields[1] as String?,
       date: fields[2] as DateTime?,
       status: fields[3] as bool?,
@@ -28,9 +27,7 @@ class CollectionAdapter extends TypeAdapter<Collection> {
   @override
   void write(BinaryWriter writer, Collection obj) {
     writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
+      ..writeByte(4)
       ..writeByte(1)
       ..write(obj.title)
       ..writeByte(2)

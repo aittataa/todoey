@@ -4,9 +4,6 @@ part 'collection.g.dart';
 
 @HiveType(typeId: 0)
 class Collection extends HiveObject {
-  @HiveField(0)
-  final int? id;
-
   @HiveField(1)
   final String? title;
 
@@ -19,7 +16,7 @@ class Collection extends HiveObject {
   @HiveField(4)
   final List<Collection>? myList;
 
-  Collection({this.id, this.title, this.date, this.status, this.myList});
+  Collection({this.title, this.date, this.status, this.myList});
 
   // factory Collection.fromMap(Map<String, dynamic> map) {
   //   return Collection(
