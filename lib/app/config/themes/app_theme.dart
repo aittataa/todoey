@@ -33,14 +33,16 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         elevation: 0,
         centerTitle: true,
-        backgroundColor: mainColor,
+        backgroundColor: backgroundColor,
+        iconTheme: IconThemeData(
+          color: secondaryIconColor.withOpacity(.65),
+        ),
         titleTextStyle: TextStyle(
-          color: secondaryTextColor,
+          color: primaryTextColor,
           fontWeight: FontWeight.w900,
           fontSize: 20,
         ),
       ),
-      //textTheme: GoogleFonts.nunitoSansTextTheme(Theme.of(context).textTheme),
     );
   }
 }

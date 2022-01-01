@@ -39,6 +39,9 @@ class _CollectionShapeState extends State<CollectionShape> {
             minLeadingWidth: 0,
             leading: CheckedBox(
               state: collections.status!,
+              onTap: () {
+                setState(() => {collections.updateStatus});
+              },
             ),
             title: Text(
               "${collections.id} ${collections.title}",

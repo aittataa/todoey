@@ -3,6 +3,7 @@ class AppMessage {
 
   /// TODO : App Texts
   static const String appTitle = "To-Do List";
+  static const String newTask = "New Task";
 
   /// TODO : Data
   static const String collectionsAssets = "collections";
