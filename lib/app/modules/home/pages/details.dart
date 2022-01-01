@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_list/app/config/messages/app_message.dart';
+import 'package:to_do_list/app/modules/home/widgets/field_text.dart';
 
 import '../../../config/functions/app_function.dart';
 import '../controllers/home_controller.dart';
@@ -30,7 +31,20 @@ class _DetailsState extends State<Details> {
         ),
         title: Text(AppMessage.newTask),
       ),
-      body: Center(child: Text("Details Page")),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            FieldText(
+              hint: "Title",
+            ),
+            FieldText(
+              hint: "Description (OPTIONAL)",
+              maxLines: 5,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

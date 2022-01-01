@@ -15,6 +15,7 @@ class AppTheme {
 
   /// TODO : Others
   static const Color transparentColor = Color(0x00000000);
+  static const Color borderColor = Color(0xFF000000);
   static const Color shadowColor = Color(0x1F000000);
 
   /// TODO : Icons
