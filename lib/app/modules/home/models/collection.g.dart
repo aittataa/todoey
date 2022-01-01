@@ -17,24 +17,30 @@ class CollectionAdapter extends TypeAdapter<Collection> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Collection(
+      id: fields[0] as int?,
       title: fields[1] as String?,
-      date: fields[2] as DateTime?,
-      status: fields[3] as bool?,
-      myList: (fields[4] as List?)?.cast<Collection>(),
+      description: fields[2] as String?,
+      date: fields[3] as DateTime?,
+      status: fields[4] as bool?,
+      myList: (fields[5] as List?)?.cast<Collection>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Collection obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
       ..writeByte(1)
       ..write(obj.title)
       ..writeByte(2)
-      ..write(obj.date)
+      ..write(obj.description)
       ..writeByte(3)
-      ..write(obj.status)
+      ..write(obj.date)
       ..writeByte(4)
+      ..write(obj.status)
+      ..writeByte(5)
       ..write(obj.myList);
   }
 

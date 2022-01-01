@@ -7,7 +7,10 @@ class HomeProvider extends GetConnect {
   @override
   void onInit() {}
 
-  Box<Collection> get getCollections => Hive.box<Collection>(AppMessage.collectionsAssets);
+  get getCollections {
+    var data = Hive.box<Collection>(AppMessage.collectionsAssets);
+    return data;
+  }
 
   createCollection(Collection collection) async {
     final box = getCollections;

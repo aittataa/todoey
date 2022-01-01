@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:to_do_list/app/modules/home/models/collection.dart';
+import 'app/modules/home/models/collection.dart';
 
 import 'app/config/functions/app_function.dart';
 import 'app/config/messages/app_message.dart';
