@@ -34,4 +34,6 @@ class Collection extends HiveObject {
     _myIndex++;
     id = _myIndex;
   }
+
+  get updateStatus => {status = !status!};
 }

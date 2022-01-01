@@ -10,7 +10,6 @@ class AppTheme {
 
   /// TODO : Backs
   static const Color backgroundColor = Color(0xFFF6F6F6);
-  static const Color backgroundImageColor = Color(0xFFFFFFFF);
   static const Color primaryBackColor = Color(0xFFFFFFFF);
   static const Color secondaryBackColor = Color(0xFF000000);
 
@@ -19,8 +18,8 @@ class AppTheme {
   static const Color shadowColor = Color(0x1F000000);
 
   /// TODO : Icons
-  static const Color primaryIconColor = Color(0xFF000000);
-  static const Color secondaryIconColor = Color(0xFFFFFFFF);
+  static const Color primaryIconColor = Color(0xFFFFFFFF);
+  static const Color secondaryIconColor = Color(0xFF000000);
 
   /// TODO : Texts
   static const Color primaryTextColor = Color(0xFF211551);
