@@ -5,6 +5,7 @@ import 'package:to_do_list/app/config/constants/app_constant.dart';
 import 'package:to_do_list/app/config/themes/app_theme.dart';
 import 'package:to_do_list/app/modules/home/controllers/home_controller.dart';
 import 'package:to_do_list/app/modules/home/models/collection.dart';
+import 'package:to_do_list/app/modules/home/widgets/action_button.dart';
 import 'package:to_do_list/app/modules/home/widgets/checked_box.dart';
 import 'package:to_do_list/app/modules/home/widgets/empty_box.dart';
 
@@ -48,93 +49,67 @@ class Home extends StatelessWidget {
       body: ValueListenableBuilder<Box<Collection>>(
         valueListenable: controller.getCollections.listenable(),
         builder: (context, box, child) {
-          final List<Collection> collections = box.values.toList().cast<Collection>();
-          return HomeBody(
-            collections: collections..sort((a, b) => b.id.compareTo(a.id)),
-          );
+          final List<Collection> collections = box.values.toList().cast<Collection>()..sort((a, b) => b.id.compareTo(a.id));
+          final bool isEmpty = collections.isEmpty;
+          if (isEmpty) {
+            return EmptyBox();
+          } else {
+            return ListView.builder(
+              shrinkWrap: true,
+              padding: EdgeInsets.all(10),
+              scrollDirection: Axis.vertical,
+              physics: BouncingScrollPhysics(),
+              itemCount: collections.length,
+              itemBuilder: (context, i) {
+                final Collection collection = collections[i];
+                return CollectionShape(collections: collection, state: true);
+              },
+            );
+          }
         },
       ),
     );
   }
 }
 
-class ActionButton extends StatelessWidget {
-  final IconData icon;
-  final Color? backgroundColor;
-  final Color? foregroundColor;
-  final Function()? onPressed;
+class CollectionShape extends StatefulWidget {
+  final bool state;
+  final Collection collections;
+  const CollectionShape({Key? key, required this.collections, this.state = false}) : super(key: key);
 
-  const ActionButton({
-    Key? key,
-    required this.icon,
-    this.backgroundColor,
-    this.foregroundColor,
-    this.onPressed,
-  }) : super(key: key);
+  @override
+  State<CollectionShape> createState() => _CollectionShapeState(state, collections);
+}
+
+class _CollectionShapeState extends State<CollectionShape> {
+  final bool state;
+  final Collection collections;
+  _CollectionShapeState(this.state, this.collections);
+
+  final bool etat = true;
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: onPressed,
-      child: Icon(icon, size: 25),
-      elevation: 1,
-      highlightElevation: 1,
-      backgroundColor: backgroundColor ?? AppTheme.mainColor,
-      foregroundColor: foregroundColor ?? AppTheme.primaryIconColor,
-      splashColor: AppTheme.transparentColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-    );
-  }
-}
-
-class HomeBody extends StatefulWidget {
-  final List<Collection> collections;
-  const HomeBody({Key? key, required this.collections}) : super(key: key);
-  @override
-  State<HomeBody> createState() => _HomeBodyState(collections);
-}
-
-class _HomeBodyState extends State<HomeBody> {
-  final List<Collection> collections;
-  _HomeBodyState(this.collections);
-
-  @override
-  Widget build(BuildContext context) {
-    final bool isEmpty = collections.isEmpty;
-    if (isEmpty) {
-      return EmptyBox();
-    } else {
-      return ListView.builder(
-        shrinkWrap: true,
-        padding: EdgeInsets.all(5),
-        scrollDirection: Axis.vertical,
-        physics: BouncingScrollPhysics(),
-        itemCount: collections.length,
-        itemBuilder: (context, i) {
-          final Collection myCollection = collections[i];
-
-          return Container(
-            margin: EdgeInsets.all(5),
+    //if (etat) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 5),
+      child: Column(
+        children: [
+          Container(
             decoration: BoxDecoration(
               color: AppTheme.primaryBackColor,
               borderRadius: BorderRadius.circular(25),
               boxShadow: [AppConstant.boxShadow],
             ),
-            child: ExpansionTile(
-              // backgroundColor: AppTheme.transparentColor,
-              // collapsedBackgroundColor: AppTheme.transparentColor,
-              iconColor: AppTheme.mainColor,
-              collapsedIconColor: AppTheme.secondaryIconColor.withOpacity(.5),
-              tilePadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-              childrenPadding: EdgeInsets.zero,
+            child: ListTile(
+              dense: !state,
+              contentPadding: EdgeInsets.symmetric(horizontal: 10),
+              minLeadingWidth: 0,
               leading: CheckedBox(
-                state: myCollection.status!,
-                onTap: () {
-                  setState(() => {myCollection.updateStatus});
-                },
+                state: collections.status!,
               ),
               title: Text(
-                "${myCollection.id} ${myCollection.title}",
+                "${collections.id} ${collections.title}",
                 style: TextStyle(
                   color: AppTheme.primaryTextColor,
                   fontWeight: FontWeight.w900,
@@ -142,7 +117,7 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
               ),
               subtitle: Text(
-                "${myCollection.description}",
+                "${collections.description}",
                 style: TextStyle(
                   color: AppTheme.secondaryTextColor,
                   fontWeight: FontWeight.w500,
@@ -150,9 +125,65 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
               ),
             ),
-          );
-        },
+          ),
+          if (state)
+            ListView.builder(
+              shrinkWrap: true,
+              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              scrollDirection: Axis.vertical,
+              physics: BouncingScrollPhysics(),
+              itemCount: collections.myList!.length,
+              itemBuilder: (context, i) {
+                final Collection collection = collections.myList![i];
+                return CollectionShape(collections: collection);
+              },
+            ),
+        ],
+      ),
+    );
+    /*
+    } else {
+      return Container(
+        margin: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: AppTheme.primaryBackColor,
+          borderRadius: BorderRadius.circular(25),
+          boxShadow: [AppConstant.boxShadow],
+        ),
+        child: ExpansionTile(
+          maintainState: true,
+          initiallyExpanded: true,
+          backgroundColor: AppTheme.transparentColor,
+          collapsedBackgroundColor: AppTheme.transparentColor,
+          iconColor: AppTheme.mainColor,
+          collapsedIconColor: AppTheme.secondaryIconColor.withOpacity(.5),
+          tilePadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+          childrenPadding: EdgeInsets.zero,
+          leading: CheckedBox(
+            state: collections.status!,
+          ),
+          title: Text(
+            "${collections.id} ${collections.title}",
+            style: TextStyle(
+              color: AppTheme.primaryTextColor,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 1,
+            ),
+          ),
+          subtitle: Text(
+            "${collections.description}",
+            style: TextStyle(
+              color: AppTheme.secondaryTextColor,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 1,
+            ),
+          ),
+          children: List.generate(collections.myList!.length, (i) {
+            return Container(color: Colors.red, child: Text("${i.toString()}"));
+          }),
+        ),
       );
     }
+    */
   }
 }

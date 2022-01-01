@@ -5,12 +5,10 @@ import '../../../config/themes/app_theme.dart';
 
 class CheckedBox extends StatelessWidget {
   final bool state;
-  final double? size;
   final Function()? onTap;
   const CheckedBox({
     Key? key,
     this.state = true,
-    this.size = 20,
     this.onTap,
   }) : super(key: key);
 
@@ -27,13 +25,9 @@ class CheckedBox extends StatelessWidget {
           duration: AppConstant.durationCheck,
           curve: AppConstant.curve,
           decoration: BoxDecoration(
-            color: state ? AppTheme.mainColor : AppTheme.transparentColor,
             shape: BoxShape.circle,
-            border: Border.all(
-              width: 2,
-              color: AppTheme.mainColor,
-              // color: state ? AppTheme.mainColor : AppTheme.secondaryColor,
-            ),
+            color: state ? AppTheme.mainColor : AppTheme.transparentColor,
+            border: Border.all(width: 2, color: AppTheme.mainColor),
           ),
           child: Icon(
             CupertinoIcons.checkmark_alt,
