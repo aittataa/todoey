@@ -4,8 +4,10 @@ part 'collection.g.dart';
 
 @HiveType(typeId: 0)
 class Collection extends HiveObject {
+  static int _myIndex = 0;
+
   @HiveField(0)
-  final int? id;
+  late int id;
 
   @HiveField(1)
   final String? title;
@@ -23,11 +25,13 @@ class Collection extends HiveObject {
   final List<Collection>? myList;
 
   Collection({
-    this.id,
     this.title,
     this.description,
     this.date,
     this.status,
     this.myList,
-  });
+  }) {
+    _myIndex++;
+    id = _myIndex;
+  }
 }
