@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:to_do_list/app/config/messages/app_message.dart';
-import 'package:to_do_list/app/modules/home/models/collection.dart';
+
+import '../../../config/messages/app_message.dart';
+import '../models/collection.dart';
 
 class HomeProvider extends GetConnect {
   @override
