@@ -12,6 +12,7 @@ class AppTheme {
   static const Color backgroundColor = Color(0xFFF6F6F6);
   static const Color primaryBackColor = Color(0xFFFFFFFF);
   static const Color secondaryBackColor = Color(0xFF000000);
+  static const Color TextFieldBackColor = Color(0xFF000000);
 
   /// TODO : Others
   static const Color transparentColor = Color(0x00000000);

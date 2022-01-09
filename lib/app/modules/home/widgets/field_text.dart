@@ -40,8 +40,8 @@ class FieldText extends StatelessWidget {
         ),
         scrollPadding: EdgeInsets.zero,
         decoration: InputDecoration(
-          filled: true,
-          fillColor: AppTheme.secondaryBackColor.withOpacity(.1),
+          filled: false,
+          fillColor: AppTheme.TextFieldBackColor.withOpacity(.025),
           contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           hintText: hint,
           hintStyle: TextStyle(
