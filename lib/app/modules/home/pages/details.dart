@@ -30,7 +30,7 @@ class _DetailsState extends State<Details> {
   final Collection collection;
   _DetailsState(this.controller, this.collection);
 
-  late Collection _collection = Collection();
+  late Collection _collection = Collection(myList: []);
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +89,7 @@ class _DetailsState extends State<Details> {
                           child: Text(
                         "${_collection.myList?.length}",
                         style: TextStyle(
-                          color: AppTheme.primaryTextColor,
+                          color: Colors.black,
                         ),
                       ));
                     },

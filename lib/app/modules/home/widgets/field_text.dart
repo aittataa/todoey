@@ -22,8 +22,8 @@ class FieldText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      padding: EdgeInsets.all(1),
-      margin: EdgeInsets.all(1),
+      // padding: EdgeInsets.all(1),
+      // margin: EdgeInsets.all(1),
       child: TextField(
         onChanged: onChanged,
         controller: controller,
@@ -40,7 +40,7 @@ class FieldText extends StatelessWidget {
         ),
         scrollPadding: EdgeInsets.zero,
         decoration: InputDecoration(
-          filled: false,
+          filled: true,
           fillColor: AppTheme.TextFieldBackColor.withOpacity(.025),
           contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           hintText: hint,
