@@ -105,6 +105,9 @@ class _DetailsState extends State<Details> {
                 child: FieldText(
                   controller: subTask,
                   hint: "Add SubTask",
+                  onChanged: (value) {
+                    print(value);
+                  },
                 ),
               ),
               trailing: Container(
@@ -115,7 +118,9 @@ class _DetailsState extends State<Details> {
                 child: IconButton(
                   onPressed: () {
                     setState(() {
-                      _collection.myList!.add(Collection(title: subTask.text));
+                      //_collection.myList!.add(Collection(title: subTask.text));
+                      //var data = _collection.addCollection(Collection(title: subTask.text));
+                      print(subTask.text);
                     });
                   },
                   padding: EdgeInsets.zero,

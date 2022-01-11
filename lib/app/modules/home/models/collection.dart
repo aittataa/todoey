@@ -35,5 +35,10 @@ class Collection extends HiveObject {
     id = _myIndex;
   }
 
+  addCollection(Collection collection) {
+    print(collection.myList?.first.title);
+    return myList?.add(collection);
+  }
+
   get updateStatus => {status = !status!};
 }
