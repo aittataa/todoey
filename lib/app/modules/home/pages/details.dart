@@ -162,8 +162,8 @@ class _DetailsState extends State<Details> {
               title: title.text,
               description: desc.text,
             );
-            var data = await controller.createCollection(newCollection);
-            print(data);
+            //var data = await controller.createCollection(newCollection);
+            //print(data);
             setState(() {
               //_collection.myList.add(Collection(title: subTask.text));
               //var data = _collection.addCollection(Collection(title: subTask.text));

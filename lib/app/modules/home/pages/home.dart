@@ -1,14 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:to_do_list/app/config/functions/app_function.dart';
 import 'package:to_do_list/app/config/messages/app_message.dart';
 
 import '../controllers/home_controller.dart';
-import '../models/collection.dart';
 import '../widgets/action_button.dart';
-import '../widgets/collection_shape.dart';
-import '../widgets/empty_box.dart';
 
 class Home extends StatefulWidget {
   final HomeController controller;
@@ -32,15 +28,16 @@ class _HomeState extends State<Home> {
           });
         },
       ),
+      /*
       body: SafeArea(
-        child: ValueListenableBuilder<Box<Collection>>(
-          valueListenable: controller.getCollections.listenable(),
-          builder: (context, box, child) {
-            final List<Collection> collections = box.values.toList().cast<Collection>()..sort((a, b) => b.id.compareTo(a.id));
-            final bool isEmpty = collections.isEmpty;
-            if (isEmpty) {
-              return EmptyBox();
-            } else {
+        child: Obx(() {
+          final List<Collection> collections = [];
+          final bool isEmpty = collections.isEmpty;
+          if (isEmpty) {
+            return EmptyBox();
+          } else {
+            return SizedBox();
+            /*
               return ListView.builder(
                 shrinkWrap: true,
                 padding: EdgeInsets.all(10),
@@ -52,10 +49,11 @@ class _HomeState extends State<Home> {
                   return CollectionShape(collections: collection, state: true);
                 },
               );
-            }
-          },
-        ),
+              */
+          }
+        }),
       ),
+      */
     );
   }
 }

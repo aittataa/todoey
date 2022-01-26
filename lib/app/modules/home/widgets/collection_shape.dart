@@ -67,9 +67,9 @@ class _CollectionShapeState extends State<CollectionShape> {
             padding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
             scrollDirection: Axis.vertical,
             physics: BouncingScrollPhysics(),
-            itemCount: collections.myList.length,
+            itemCount: collections.myList!.length,
             itemBuilder: (context, i) {
-              final Collection collection = (collections.myList..sort((a, b) => b.id.compareTo(a.id)))[i];
+              final Collection collection = (collections.myList!..sort((a, b) => b.id.compareTo(a.id)))[i];
               return Padding(
                 padding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
                 child: CollectionShape(collections: collection),
