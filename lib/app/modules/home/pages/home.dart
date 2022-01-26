@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:to_do_list/app/config/functions/app_function.dart';
 import 'package:to_do_list/app/config/messages/app_message.dart';
+import 'package:to_do_list/app/config/themes/app_theme.dart';
 import 'package:to_do_list/app/modules/home/models/collection.dart';
 import 'package:to_do_list/app/modules/home/widgets/bounce_point.dart';
 import 'package:to_do_list/app/modules/home/widgets/collection_shape.dart';
@@ -27,6 +28,8 @@ class _HomeState extends State<Home> {
       appBar: AppBar(title: Text(AppMessage.appTitle)),
       floatingActionButton: ActionButton(
         icon: CupertinoIcons.plus_app,
+        backgroundColor: AppTheme.mainColor,
+        foregroundColor: AppTheme.primaryIconColor,
         onPressed: () {
           setState(() {
             AppFunction.animateToPage(1);

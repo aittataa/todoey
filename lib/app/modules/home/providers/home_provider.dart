@@ -21,8 +21,8 @@ class HomeProvider extends GetConnect {
       $_title TEXT NOT NULL,
       $_description TEXT,
       $_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-      $_status BIT NOT NULL DEFAULT 0,
-      $_collection_id INTEGER NOT NULL DEFAULT 0
+      $_status BIT DEFAULT 0,
+      $_collection_id INTEGER DEFAULT 0
   );''';
 
   static const String _tbl_collections_data_query = '''
@@ -55,7 +55,7 @@ class HomeProvider extends GetConnect {
     return collectionsFromMap(response);
   }
 
-  Future insertCollection(Collection collection) async {
+  Future createCollection(Collection collection) async {
     final db = await _database;
     final response = await db.insert(
       _tbl_collections,

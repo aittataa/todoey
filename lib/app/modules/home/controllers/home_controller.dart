@@ -18,16 +18,22 @@ class HomeController extends GetxController {
     collections.value = await _provider.getCollections;
     state.value = false;
   }
-  //
-  // createCollection(Collection collection) {
-  //   return _provider.createCollection(collection);
-  // }
-  //
-  // updateCollection(Collection collection) {
-  //   return _provider.updateCollection(collection);
-  // }
-  //
-  // deleteCollection(Collection collection) {
-  //   return _provider.deleteCollection(collection);
-  // }
+
+  createCollection(Collection collection) async {
+    final response = await _provider.createCollection(collection);
+    _getCollections;
+    return response;
+  }
+
+  updateCollection(Collection collection) async {
+    final response = await _provider.updateCollection(collection);
+    _getCollections;
+    return response;
+  }
+
+  deleteCollection(int id) async {
+    final response = await _provider.deleteCollection(id);
+    _getCollections;
+    return response;
+  }
 }

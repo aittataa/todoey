@@ -31,7 +31,7 @@ class Collection {
   }
   Map<String, dynamic> toMap() {
     return {
-      "id": id,
+      // "id": id,
       "title": title,
       "description": description,
       "date": date,

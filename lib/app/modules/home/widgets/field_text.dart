@@ -22,8 +22,6 @@ class FieldText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      // padding: EdgeInsets.all(1),
-      // margin: EdgeInsets.all(1),
       child: TextField(
         onChanged: onChanged,
         controller: controller,
@@ -31,17 +29,16 @@ class FieldText extends StatelessWidget {
         keyboardType: TextInputType.text,
         textInputAction: TextInputAction.next,
         cursorColor: AppTheme.mainColor,
-        minLines: 1,
         maxLines: maxLines,
         style: TextStyle(
           color: AppTheme.primaryTextColor.withOpacity(.75),
           fontWeight: FontWeight.w900,
           letterSpacing: 1,
         ),
-        scrollPadding: EdgeInsets.zero,
+        // scrollPadding: EdgeInsets.zero,
         decoration: InputDecoration(
-          filled: true,
-          fillColor: AppTheme.TextFieldBackColor.withOpacity(.025),
+          // filled: false,
+          // fillColor: AppTheme.TextFieldBackColor.withOpacity(.025),
           contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           hintText: hint,
           hintStyle: TextStyle(
@@ -50,14 +47,14 @@ class FieldText extends StatelessWidget {
             letterSpacing: 1,
           ),
           border: InputBorder.none,
-          enabledBorder: UnderlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: AppTheme.transparentColor),
-          ),
-          focusedBorder: UnderlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: AppTheme.transparentColor),
-          ),
+          // enabledBorder: UnderlineInputBorder(
+          //   borderRadius: BorderRadius.circular(10),
+          //   borderSide: BorderSide(color: AppTheme.transparentColor),
+          // ),
+          // focusedBorder: UnderlineInputBorder(
+          //   borderRadius: BorderRadius.circular(10),
+          //   borderSide: BorderSide(color: AppTheme.transparentColor),
+          // ),
         ),
       ),
     );

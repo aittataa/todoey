@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:to_do_list/app/modules/home/models/collection.dart';
 
 import '../../../config/constants/app_constant.dart';
 import '../controllers/home_controller.dart';
@@ -17,7 +16,7 @@ class HomeView extends StatelessWidget {
         controller: AppConstant.pageController,
         children: [
           Home(controller: controller),
-          Details(controller: controller, collection: Collection()),
+          Details(controller: controller),
         ],
       ),
     );

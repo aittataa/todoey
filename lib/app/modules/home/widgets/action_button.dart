@@ -4,15 +4,15 @@ import '../../../config/themes/app_theme.dart';
 
 class ActionButton extends StatelessWidget {
   final IconData icon;
-  final Color? backgroundColor;
-  final Color? foregroundColor;
+  final Color backgroundColor;
+  final Color foregroundColor;
   final Function()? onPressed;
 
   const ActionButton({
     Key? key,
     required this.icon,
-    this.backgroundColor,
-    this.foregroundColor,
+    required this.backgroundColor,
+    required this.foregroundColor,
     this.onPressed,
   }) : super(key: key);
 
@@ -23,8 +23,8 @@ class ActionButton extends StatelessWidget {
       child: Icon(icon, size: 30),
       elevation: 1,
       highlightElevation: 1,
-      backgroundColor: backgroundColor ?? AppTheme.mainColor,
-      foregroundColor: foregroundColor ?? AppTheme.primaryIconColor,
+      backgroundColor: backgroundColor,
+      foregroundColor: foregroundColor,
       splashColor: AppTheme.transparentColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     );
