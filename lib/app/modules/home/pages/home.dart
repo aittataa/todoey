@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:to_do_list/app/config/functions/app_function.dart';
 import 'package:to_do_list/app/config/messages/app_message.dart';
+import 'package:to_do_list/app/modules/home/models/collection.dart';
+import 'package:to_do_list/app/modules/home/widgets/bounce_point.dart';
+import 'package:to_do_list/app/modules/home/widgets/collection_shape.dart';
+import 'package:to_do_list/app/modules/home/widgets/empty_box.dart';
 
 import '../controllers/home_controller.dart';
 import '../widgets/action_button.dart';
@@ -28,32 +33,36 @@ class _HomeState extends State<Home> {
           });
         },
       ),
-      /*
       body: SafeArea(
         child: Obx(() {
-          final List<Collection> collections = [];
-          final bool isEmpty = collections.isEmpty;
-          if (isEmpty) {
-            return EmptyBox();
+          final bool state = controller.state.value;
+          if (state) {
+            return BouncePoint();
           } else {
-            return SizedBox();
-            /*
+            final List<Collection> collections = controller.collections;
+            final List<Collection> myList = collections.where((collection) => collection.collectionId == 0).toList();
+            final bool isEmpty = myList.isEmpty;
+            if (isEmpty) {
+              return EmptyBox();
+            } else {
               return ListView.builder(
                 shrinkWrap: true,
                 padding: EdgeInsets.all(10),
                 scrollDirection: Axis.vertical,
                 physics: BouncingScrollPhysics(),
-                itemCount: collections.length,
+                itemCount: myList.length,
                 itemBuilder: (context, i) {
-                  final Collection collection = collections[i];
-                  return CollectionShape(collections: collection, state: true);
+                  final Collection collection = myList[i];
+                  return CollectionShape(
+                    collections: collection,
+                    myList: collections.where((_collection) => _collection.collectionId == collection.id).toList(),
+                  );
                 },
               );
-              */
+            }
           }
         }),
       ),
-      */
     );
   }
 }

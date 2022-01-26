@@ -1,45 +1,89 @@
 import 'package:get/get.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:to_do_list/app/modules/home/models/collection.dart';
 
 class HomeProvider extends GetConnect {
   @override
   void onInit() {}
-  static const String _db_name = "to_do_list.db";
+  static const String _db_name = "collections.db";
+  static const String _tbl_collections = "collections";
   static const String _id = "id";
   static const String _title = "title";
-  static const String _state = "state";
+  static const String _description = "description";
+  static const String _date = "date";
+  static const String _status = "status";
+  static const String _collection_id = "collection_id";
 
-  static const String _tbl_settings = "settings";
-  static const String _currency = "currency";
-  static const String _tbl_settings_query = '''
-  CREATE TABLE $_tbl_settings(
-      $_id INTEGER PRIMARY KEY AUTOINCREMENT, 
-      $_currency TEXT NOT NULL
-  );''';
-  static const String _tbl_settings_data_query = '''
-  INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, 'DH')''';
-
-  static const String _tbl_category = "categories";
-  static const String _color = "color";
-  static const String _total = "total";
-  static const String _tbl_category_query = '''
-  CREATE TABLE $_tbl_category(
+  static const String _tbl_collections_query = '''
+  CREATE TABLE $_tbl_collections(
       $_id INTEGER PRIMARY KEY AUTOINCREMENT,
       $_title TEXT NOT NULL,
-      $_color INTEGER NOT NULL,
-      $_state BIT NOT NULL
+      $_description TEXT,
+      $_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+      $_status BIT NOT NULL DEFAULT 1,
+      $_collection_id INTEGER NOT NULL DEFAULT 0
   );''';
 
-  // static String _tbl_category_data_query = '''
-  // INSERT INTO $_tbl_category($_id, $_title, $_color, $_state)VALUES
-  //   (1, 'Others', '${AppFunction.getRandomColor}', 0),
-  //   (2, 'Salary', '${AppFunction.getRandomColor}', 0),
-  //   (3, 'Others', '${AppFunction.getRandomColor}', 1),
-  //   (4, 'Food', '${AppFunction.getRandomColor}', 1),
-  //   (5, 'Clothes', '${AppFunction.getRandomColor}', 1),
-  //   (6, 'Transportation', '${AppFunction.getRandomColor}', 1),
-  //   (7, 'Shopping', '${AppFunction.getRandomColor}', 1),
-  //   (8, 'Bills', '${AppFunction.getRandomColor}', 1)
-  // ''';
+  static const String _tbl_collections_data_query = '''
+  INSERT INTO $_tbl_collections($_id, $_title, $_description, $_collection_id)VALUES
+  (1, 'Collection 1', '1 Collections Description', 0),
+  (2, 'Collection 2', '2 Collections Description', 1),
+  (3, 'Collection 3', '3 Collections Description', 1),
+  (4, 'Collection 4', '4 Collections Description', 1),
+  (5, 'Collection 5', '5 Collections Description', 0),
+  (6, 'Collection 6', '6 Collections Description', 5),
+  (7, 'Collection 7', '7 Collections Description', 5),
+  (8, 'Collection 8', '8 Collections Description', 0),
+  (9, 'Collection 9', '9 Collections Description', 9);
+  ''';
+
+  Future<Database> get _database async {
+    return await openDatabase(
+      join(await getDatabasesPath(), _db_name),
+      version: 1,
+      onCreate: (db, version) async {
+        await db.execute(_tbl_collections_query);
+        await db.execute(_tbl_collections_data_query);
+      },
+    );
+  }
+
+  Future<List<Collection>> get getCollections async {
+    final db = await _database;
+    final List<Map<String, dynamic>> response = await db.query(_tbl_collections);
+    return collectionsFromMap(response);
+  }
+
+  Future insertCollection(Collection collection) async {
+    final db = await _database;
+    final response = await db.insert(
+      _tbl_collections,
+      collection.toMap(),
+    );
+    return response;
+  }
+
+  Future updateCollection(Collection collection) async {
+    final db = await _database;
+    final response = await db.update(
+      _tbl_collections,
+      collection.toMap(),
+      where: "$_id = ?",
+      whereArgs: [collection.id],
+    );
+    return response;
+  }
+
+  Future deleteCollection(int id) async {
+    final db = await _database;
+    final response = await db.delete(
+      _tbl_collections,
+      where: "$_id = ?",
+      whereArgs: [id],
+    );
+    return response;
+  }
 
   ///
   // get getCollections => Hive.box<Collection>(AppMessage.collectionsAssets);
