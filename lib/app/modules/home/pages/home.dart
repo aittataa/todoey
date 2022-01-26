@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
             return BouncePoint();
           } else {
             final List<Collection> collections = controller.collections;
-            final List<Collection> myList = collections.where((collection) => collection.collectionId == 0).toList()..sort((a, b) => b.id!.compareTo(a.id!));
+            final List<Collection> myList = collections; //.where((collection) => collection.collectionId == 0).toList()..sort((a, b) => b.id!.compareTo(a.id!));
             final bool isEmpty = myList.isEmpty;
             if (isEmpty) {
               return EmptyBox();

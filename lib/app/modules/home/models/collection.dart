@@ -34,9 +34,9 @@ class Collection {
       // "id": id,
       "title": title,
       "description": description,
-      "date": date,
-      "status": status,
-      "collection_id": collectionId,
+      "date": date!.toIso8601String(),
+      "status": status ?? 0,
+      "collection_id": collectionId ?? 0,
     };
   }
 

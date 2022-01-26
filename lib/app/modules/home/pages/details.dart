@@ -61,7 +61,11 @@ class _DetailsState extends State<Details> {
           final String title = titleController.text;
           final String desc = descController.text;
           if (title.isNotEmpty || desc.isNotEmpty) {
-            final Collection collection = Collection(title: title, description: desc);
+            final Collection collection = Collection(
+              title: title,
+              description: desc,
+              date: DateTime.now(),
+            );
             final data = await controller.createCollection(collection);
             print(data);
           }
