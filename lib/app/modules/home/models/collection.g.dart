@@ -21,7 +21,7 @@ class CollectionAdapter extends TypeAdapter<Collection> {
       description: fields[2] as String?,
       date: fields[3] as DateTime?,
       status: fields[4] as bool?,
-      myList: (fields[5] as List?)?.cast<Collection>(),
+      myList: (fields[5] as List).cast<Collection>(),
     )..id = fields[0] as int;
   }
 

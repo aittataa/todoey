@@ -9,6 +9,7 @@ import '../pages/home.dart';
 
 class HomeView extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
+  final Collection collection = Collection(title: "My Task");
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class HomeView extends StatelessWidget {
         controller: AppConstant.pageController,
         children: [
           Home(controller: controller),
-          Details(controller: controller, collection: Collection()),
+          Details(controller: controller, collection: collection),
         ],
       ),
     );

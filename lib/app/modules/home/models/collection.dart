@@ -22,23 +22,23 @@ class Collection extends HiveObject {
   late bool? status;
 
   @HiveField(5)
-  final List<Collection>? myList;
+  final List<Collection> myList;
 
   Collection({
     this.title,
     this.description,
     this.date,
     this.status,
-    this.myList,
+    this.myList = const [],
   }) {
     _myIndex++;
     id = _myIndex;
   }
 
-  addCollection(Collection collection) {
-    print(collection.myList?.first.title);
-    return myList?.add(collection);
-  }
+  // addCollection(Collection collection) {
+  //   print(collection.myList.first.title);
+  //   return myList.add(collection);
+  // }
 
   get updateStatus => {status = !status!};
 }
