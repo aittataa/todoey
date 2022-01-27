@@ -44,14 +44,17 @@ class HomeProvider extends GetConnect {
       version: 1,
       onCreate: (db, version) async {
         await db.execute(_tbl_collections_query);
-        //await db.execute(_tbl_collections_data_query);
+        await db.execute(_tbl_collections_data_query);
       },
     );
   }
 
   Future<List<Collection>> get getCollections async {
     final db = await _database;
-    final List<Map<String, dynamic>> response = await db.query(_tbl_collections);
+    final List<Map<String, dynamic>> response = await db.query(
+      _tbl_collections,
+      orderBy: "$_id DESC",
+    );
     return collectionsFromMap(response);
   }
 
@@ -84,20 +87,4 @@ class HomeProvider extends GetConnect {
     );
     return response;
   }
-
-  ///
-  // get getCollections => Hive.box<Collection>(AppMessage.collectionsAssets);
-  //
-  // createCollection(Collection collection) {
-  //   final box = getCollections;
-  //   return box.add(collection);
-  // }
-  //
-  // updateCollection(Collection collection) {
-  //   return collection.save();
-  // }
-  //
-  // deleteCollection(Collection collection) {
-  //   return collection.delete();
-  // }
 }
