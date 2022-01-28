@@ -44,8 +44,7 @@ class _HomeState extends State<Home> {
             return BouncePoint();
           } else {
             final List<Collection> collections = controller.collections;
-            final List<Collection> myList = collections; //.where((collection) => collection.collectionId == 0).toList()..sort((a, b) => b.id!.compareTo(a.id!));
-            final bool isEmpty = myList.isEmpty;
+            final bool isEmpty = collections.isEmpty;
             if (isEmpty) {
               return EmptyBox();
             } else {
@@ -54,12 +53,12 @@ class _HomeState extends State<Home> {
                 padding: EdgeInsets.all(10),
                 scrollDirection: Axis.vertical,
                 physics: BouncingScrollPhysics(),
-                itemCount: myList.length,
+                itemCount: collections.length,
                 itemBuilder: (context, i) {
-                  final Collection collection = myList[i];
+                  final Collection collection = collections[i];
                   return CollectionShape(
+                    controller: controller,
                     collection: collection,
-                    myList: collections.where((_collection) => _collection.collectionId == collection.id).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
                   );
                 },
               );
