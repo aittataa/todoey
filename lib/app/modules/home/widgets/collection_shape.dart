@@ -44,7 +44,7 @@ class _CollectionShapeState extends State<CollectionShape> {
               },
             ),
             title: Text(
-              "${collection.title}",
+              "${collection.id} - ${collection.title}",
               style: TextStyle(
                 color: AppTheme.primaryTextColor,
                 fontWeight: FontWeight.w900,

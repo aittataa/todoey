@@ -6,6 +6,7 @@ class ActionButton extends StatelessWidget {
   final IconData icon;
   final Color backgroundColor;
   final Color foregroundColor;
+  final double circular;
   final Function()? onPressed;
 
   const ActionButton({
@@ -13,6 +14,7 @@ class ActionButton extends StatelessWidget {
     required this.icon,
     required this.backgroundColor,
     required this.foregroundColor,
+    this.circular = 100,
     this.onPressed,
   }) : super(key: key);
 
@@ -26,7 +28,7 @@ class ActionButton extends StatelessWidget {
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
       splashColor: AppTheme.transparentColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(circular)),
     );
   }
 }

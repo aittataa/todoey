@@ -8,7 +8,7 @@ class AppConstant {
 
   /// TODO : Screen Controller
   static PageController pageController = PageController();
-  static int pageIndex = 1;
+  static int pageIndex = 0;
 
   /// TODO : Screen Size
   static double screenWidth = Get.width;

@@ -33,6 +33,8 @@ class _DetailsState extends State<Details> {
   //final Collection collection;
   _DetailsState(this.controller);
 
+  late List<Collection> myList = [];
+
   @override
   void initState() {
     super.initState();
@@ -75,27 +77,27 @@ class _DetailsState extends State<Details> {
           });
         },
       ),
-      body: ListView(
-        shrinkWrap: true,
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(10),
-        physics: const BouncingScrollPhysics(),
-        children: [
-          FieldText(
-            controller: titleController,
-            hint: "Type Task Title",
-            onChanged: (value) {
-              setState(() {});
-            },
-          ),
-          FieldText(
-            controller: descController,
-            hint: "Description (OPTIONAL)",
-            maxLines: 5,
-            onChanged: (value) {
-              setState(() {});
-            },
-          ),
-        ],
+        child: Column(
+          children: [
+            FieldText(
+              controller: titleController,
+              hint: "Type Task Title",
+              onChanged: (value) {
+                setState(() {});
+              },
+            ),
+            FieldText(
+              controller: descController,
+              hint: "Description (OPTIONAL)",
+              maxLines: 5,
+              onChanged: (value) {
+                setState(() {});
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

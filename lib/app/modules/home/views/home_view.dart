@@ -13,6 +13,11 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: PageView(
+        onPageChanged: (index) {
+          if (index == 0) {
+            FocusScope.of(context).unfocus();
+          }
+        },
         controller: AppConstant.pageController,
         children: [
           Home(controller: controller),

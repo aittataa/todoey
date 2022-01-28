@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
         icon: CupertinoIcons.plus_app,
         backgroundColor: AppTheme.mainColor,
         foregroundColor: AppTheme.primaryIconColor,
+        circular: 20,
         onPressed: () {
           setState(() {
             AppFunction.animateToPage(1);
