@@ -82,8 +82,61 @@ class _DetailsState extends State<Details> {
         child: Column(
           children: [
             Container(
-              color: Colors.red,
-              height: 55,
+              //color: Colors.red.withOpacity(.1),
+              height: 50,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    decoration: BoxDecoration(
+                      color: AppTheme.mainColor.withOpacity(.25),
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(color: AppTheme.mainColor, width: 2),
+                    ),
+                    child: Text(
+                      "Today",
+                      style: TextStyle(
+                        color: AppTheme.primaryTextColor,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    decoration: BoxDecoration(
+                      color: AppTheme.primaryColor.withOpacity(.25),
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(color: AppTheme.primaryColor, width: 2),
+                    ),
+                    child: Text(
+                      "Tomorrow",
+                      style: TextStyle(
+                        color: AppTheme.primaryTextColor,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    decoration: BoxDecoration(
+                      color: AppTheme.secondaryColor.withOpacity(.25),
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(color: AppTheme.secondaryColor, width: 2),
+                    ),
+                    child: Text(
+                      "Scheduled",
+                      style: TextStyle(
+                        color: AppTheme.primaryTextColor,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             FieldText(
               controller: titleController,
