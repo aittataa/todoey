@@ -81,6 +81,10 @@ class _DetailsState extends State<Details> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
+            Container(
+              color: Colors.red,
+              height: 55,
+            ),
             FieldText(
               controller: titleController,
               hint: "Type Task Title",
