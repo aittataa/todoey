@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_list/app/config/constants/app_constant.dart';
 import 'package:to_do_list/app/modules/home/controllers/home_controller.dart';
@@ -9,15 +10,21 @@ import 'checked_box.dart';
 class CollectionShape extends StatefulWidget {
   final HomeController controller;
   final Collection collection;
-  const CollectionShape({required this.controller, required this.collection});
+  final Function()? onDelete;
+  const CollectionShape({
+    required this.controller,
+    required this.collection,
+    this.onDelete,
+  });
   @override
-  State<CollectionShape> createState() => _CollectionShapeState(controller, collection);
+  State<CollectionShape> createState() => _CollectionShapeState(controller, collection, onDelete);
 }
 
 class _CollectionShapeState extends State<CollectionShape> {
   final HomeController controller;
   final Collection collection;
-  _CollectionShapeState(this.controller, this.collection);
+  final Function()? onDelete;
+  _CollectionShapeState(this.controller, this.collection, this.onDelete);
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +62,14 @@ class _CollectionShapeState extends State<CollectionShape> {
             fontWeight: FontWeight.bold,
             letterSpacing: 1,
           ),
+        ),
+        trailing: IconButton(
+          onPressed: onDelete,
+          padding: EdgeInsets.zero,
+          color: AppTheme.primaryColor,
+          highlightColor: AppTheme.transparentColor,
+          splashColor: AppTheme.transparentColor,
+          icon: Icon(CupertinoIcons.delete_solid),
         ),
       ),
     );

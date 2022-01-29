@@ -59,6 +59,13 @@ class _HomeState extends State<Home> {
                   return CollectionShape(
                     controller: controller,
                     collection: collection,
+                    onDelete: () async {
+                      final data = await controller.deleteCollection(collection);
+                      setState(() {
+                        collections.remove(collection);
+                        print(data);
+                      });
+                    },
                   );
                 },
               );

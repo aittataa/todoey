@@ -25,18 +25,18 @@ class HomeProvider extends GetConnect {
       $_collection_id INTEGER DEFAULT 0
   );''';
 
-  // static const String _tbl_collections_data_query = '''
-  // INSERT INTO $_tbl_collections($_id, $_title, $_description, $_collection_id)VALUES
-  //            (1, 'Collection 1', '1 Collections Description', 0),
-  //            (2, 'Collection 2', '2 Collections Description', 0),
-  //            (3, 'Collection 3', '3 Collections Description', 0),
-  //            (4, 'Collection 4', '4 Collections Description', 0),
-  //            (5, 'Collection 5', '5 Collections Description', 0),
-  //            (6, 'Collection 6', '6 Collections Description', 0),
-  //            (7, 'Collection 7', '7 Collections Description', 0),
-  //            (8, 'Collection 8', '8 Collections Description', 0),
-  //            (9, 'Collection 9', '9 Collections Description', 0);
-  // ''';
+  static const String _tbl_collections_data_query = '''
+  INSERT INTO $_tbl_collections($_id, $_title, $_description, $_collection_id)VALUES
+             (1, 'Collection 1', '1 Collections Description', 0),
+             (2, 'Collection 2', '2 Collections Description', 0),
+             (3, 'Collection 3', '3 Collections Description', 0),
+             (4, 'Collection 4', '4 Collections Description', 0),
+             (5, 'Collection 5', '5 Collections Description', 0),
+             (6, 'Collection 6', '6 Collections Description', 0),
+             (7, 'Collection 7', '7 Collections Description', 0),
+             (8, 'Collection 8', '8 Collections Description', 0),
+             (9, 'Collection 9', '9 Collections Description', 0);
+  ''';
 
   Future<Database> get _database async {
     return await openDatabase(
@@ -44,7 +44,7 @@ class HomeProvider extends GetConnect {
       version: 1,
       onCreate: (db, version) async {
         await db.execute(_tbl_collections_query);
-        //await db.execute(_tbl_collections_data_query);
+        await db.execute(_tbl_collections_data_query);
       },
     );
   }
@@ -78,12 +78,12 @@ class HomeProvider extends GetConnect {
     return response;
   }
 
-  Future deleteCollection(int id) async {
+  Future deleteCollection(Collection collection) async {
     final db = await _database;
     final response = await db.delete(
       _tbl_collections,
       where: "$_id = ?",
-      whereArgs: [id],
+      whereArgs: [collection.id],
     );
     return response;
   }
