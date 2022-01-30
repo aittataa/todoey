@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:to_do_list/app/config/functions/app_function.dart';
-import 'package:to_do_list/app/config/messages/app_message.dart';
-import 'package:to_do_list/app/config/themes/app_theme.dart';
+import 'package:to_do_list/app/config/app_function.dart';
+import 'package:to_do_list/app/config/app_message.dart';
+import 'package:to_do_list/app/config/app_theme.dart';
 import 'package:to_do_list/app/modules/home/models/collection.dart';
 import 'package:to_do_list/app/modules/home/widgets/action_button.dart';
 
@@ -68,7 +68,7 @@ class _DetailsState extends State<Details> {
             final Collection collection = Collection(
               title: title,
               description: desc,
-              date: DateTime.now(),
+              date: selectedDate,
             );
             final data = await controller.createCollection(collection);
             print(data);

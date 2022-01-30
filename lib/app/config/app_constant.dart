@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../config/themes/app_theme.dart';
+import 'app_theme.dart';
 
 class AppConstant {
   AppConstant._();

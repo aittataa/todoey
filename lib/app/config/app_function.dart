@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../config/constants/app_constant.dart';
-import '../../config/themes/app_theme.dart';
+import 'app_constant.dart';
+import 'app_theme.dart';
 
 class AppFunction {
   AppFunction._();

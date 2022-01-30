@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:to_do_list/app/config/app_constant.dart';
 
-import '../../../config/constants/app_constant.dart';
 import '../controllers/home_controller.dart';
 import '../pages/details.dart';
 import '../pages/home.dart';

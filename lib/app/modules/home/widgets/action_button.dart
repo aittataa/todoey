@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/themes/app_theme.dart';
+import '../../../config/app_theme.dart';
 
 class ActionButton extends StatelessWidget {
   final IconData icon;

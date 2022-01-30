@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/themes/app_theme.dart';
+import '../../../config/app_theme.dart';
 
 class FieldText extends StatelessWidget {
   final TextEditingController? controller;
