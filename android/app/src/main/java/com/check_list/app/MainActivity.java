@@ -1,4 +1,4 @@
-package com.to_do_list.to_do_list;
+package com.check_list.app;
 
 import io.flutter.embedding.android.FlutterActivity;
 

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.to_do_list.to_do_list">
+    package="com.check_list.app">
    <application
         android:label="CheckList"
         android:name="${applicationName}"
