@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:to_do_list/app/modules/home/models/collection.dart';
+
+import '../models/collection.dart';
 
 class HomeProvider extends GetConnect {
   @override

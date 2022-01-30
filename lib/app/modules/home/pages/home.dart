@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:to_do_list/app/config/app_function.dart';
-import 'package:to_do_list/app/config/app_message.dart';
-import 'package:to_do_list/app/config/app_theme.dart';
-import 'package:to_do_list/app/modules/home/models/collection.dart';
-import 'package:to_do_list/app/modules/home/widgets/bounce_point.dart';
-import 'package:to_do_list/app/modules/home/widgets/collection_shape.dart';
-import 'package:to_do_list/app/modules/home/widgets/empty_box.dart';
 
+import '../../../config/app_function.dart';
+import '../../../config/app_message.dart';
+import '../../../config/app_theme.dart';
 import '../controllers/home_controller.dart';
+import '../models/collection.dart';
 import '../widgets/action_button.dart';
+import '../widgets/bounce_point.dart';
+import '../widgets/collection_shape.dart';
+import '../widgets/empty_box.dart';
 
 class Home extends StatefulWidget {
   final HomeController controller;

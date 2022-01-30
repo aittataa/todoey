@@ -35,10 +35,8 @@ class FieldText extends StatelessWidget {
           fontWeight: FontWeight.w900,
           letterSpacing: 1,
         ),
-        // scrollPadding: EdgeInsets.zero,
         decoration: InputDecoration(
-          // filled: false,
-          // fillColor: AppTheme.TextFieldBackColor.withOpacity(.025),
+          border: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           hintText: hint,
           hintStyle: TextStyle(
@@ -46,15 +44,6 @@ class FieldText extends StatelessWidget {
             fontWeight: FontWeight.bold,
             letterSpacing: 1,
           ),
-          border: InputBorder.none,
-          // enabledBorder: UnderlineInputBorder(
-          //   borderRadius: BorderRadius.circular(10),
-          //   borderSide: BorderSide(color: AppTheme.transparentColor),
-          // ),
-          // focusedBorder: UnderlineInputBorder(
-          //   borderRadius: BorderRadius.circular(10),
-          //   borderSide: BorderSide(color: AppTheme.transparentColor),
-          // ),
         ),
       ),
     );

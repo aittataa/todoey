@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:to_do_list/app/config/app_constant.dart';
-import 'package:to_do_list/app/config/app_function.dart';
-import 'package:to_do_list/app/modules/home/controllers/home_controller.dart';
 
+import '../../../config/app_constant.dart';
+import '../../../config/app_function.dart';
 import '../../../config/app_theme.dart';
+import '../controllers/home_controller.dart';
 import '../models/collection.dart';
 import 'checked_box.dart';
 

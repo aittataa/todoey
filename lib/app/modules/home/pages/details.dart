@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:to_do_list/app/config/app_function.dart';
-import 'package:to_do_list/app/config/app_message.dart';
-import 'package:to_do_list/app/config/app_theme.dart';
-import 'package:to_do_list/app/modules/home/models/collection.dart';
-import 'package:to_do_list/app/modules/home/widgets/action_button.dart';
 
+import '../../../config/app_function.dart';
+import '../../../config/app_message.dart';
+import '../../../config/app_theme.dart';
 import '../controllers/home_controller.dart';
+import '../models/collection.dart';
+import '../widgets/action_button.dart';
 import '../widgets/field_text.dart';
 
 class Details extends StatefulWidget {

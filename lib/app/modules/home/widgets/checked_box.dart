@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:to_do_list/app/config/app_constant.dart';
 
+import '../../../config/app_constant.dart';
 import '../../../config/app_theme.dart';
 
 class CheckedBox extends StatelessWidget {
