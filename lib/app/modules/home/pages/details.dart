@@ -11,14 +11,7 @@ import '../widgets/field_text.dart';
 
 class Details extends StatefulWidget {
   final HomeController controller;
-  //final Collection collection;
-  final bool state;
-  const Details({
-    Key? key,
-    required this.controller,
-    //required this.collection,
-    this.state = false,
-  }) : super(key: key);
+  const Details({Key? key, required this.controller}) : super(key: key);
   @override
   State<Details> createState() => _DetailsState(controller);
 }
@@ -26,14 +19,9 @@ class Details extends StatefulWidget {
 class _DetailsState extends State<Details> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descController = TextEditingController();
-  //final TextEditingController subTask = TextEditingController();
-
-  ///
   final HomeController controller;
-  //final Collection collection;
   _DetailsState(this.controller);
 
-  // late List<Collection> myList = [];
   late DateTime selectedDate;
 
   @override
@@ -47,6 +35,10 @@ class _DetailsState extends State<Details> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
+          padding: EdgeInsets.zero,
+          color: AppTheme.secondaryIconColor,
+          highlightColor: AppTheme.transparentColor,
+          splashColor: AppTheme.transparentColor,
           icon: Icon(CupertinoIcons.back),
           onPressed: () async {
             setState(() {
