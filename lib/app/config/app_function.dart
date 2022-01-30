@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -14,6 +15,28 @@ class AppFunction {
   static int get getRandomColor => Color(Random().nextInt(0xFFFFFFFF)).withAlpha(0xFF).value;
 
   static String dateShape(DateTime date) => DateFormat('MMM dd, yyyy').format(date);
+
+  static pickScheduledDate(context, {required Function(DateTime) onDateTimeChanged}) {
+    return showModalBottomSheet(
+      context: context,
+      backgroundColor: AppTheme.primaryBackColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25),
+          topRight: Radius.circular(25),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return CupertinoDatePicker(
+          onDateTimeChanged: onDateTimeChanged,
+          mode: CupertinoDatePickerMode.date,
+          initialDateTime: DateTime.now(),
+          minimumYear: DateTime.now().year,
+          maximumYear: DateTime.now().year + 5,
+        );
+      },
+    );
+  }
 
   static snackBar({required String title, required String message}) {
     return Get.snackbar(

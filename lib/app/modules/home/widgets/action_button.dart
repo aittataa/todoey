@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list/app/config/app_message.dart';
 
+import '../../../config/app_message.dart';
 import '../../../config/app_theme.dart';
 
 class ActionButton extends StatelessWidget {
@@ -25,10 +25,9 @@ class ActionButton extends StatelessWidget {
       onPressed: onPressed,
       child: Image.asset(
         AppMessage.appLogo,
-        color: foregroundColor,
         height: 40,
+        color: AppTheme.primaryIconColor,
       ),
-      //child: Icon(icon, size: 30),
       elevation: 1,
       highlightElevation: 1,
       backgroundColor: backgroundColor,

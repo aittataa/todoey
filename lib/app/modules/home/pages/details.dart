@@ -127,7 +127,7 @@ class _DetailsState extends State<Details> {
                   GestureDetector(
                     onTap: () {
                       FocusScope.of(context).unfocus();
-                      pickScheduledDate(
+                      AppFunction.pickScheduledDate(
                         context,
                         onDateTimeChanged: (value) {
                           selectedDate = value;
@@ -175,26 +175,4 @@ class _DetailsState extends State<Details> {
       ),
     );
   }
-}
-
-pickScheduledDate(context, {required Function(DateTime) onDateTimeChanged}) {
-  return showModalBottomSheet(
-    context: context,
-    backgroundColor: AppTheme.primaryBackColor,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(25),
-        topRight: Radius.circular(25),
-      ),
-    ),
-    builder: (BuildContext context) {
-      return CupertinoDatePicker(
-        onDateTimeChanged: onDateTimeChanged,
-        mode: CupertinoDatePickerMode.date,
-        initialDateTime: DateTime.now(),
-        minimumYear: DateTime.now().year,
-        maximumYear: DateTime.now().year + 5,
-      );
-    },
-  );
 }
