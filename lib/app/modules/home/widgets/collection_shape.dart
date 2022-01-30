@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_list/app/config/constants/app_constant.dart';
+import 'package:to_do_list/app/config/functions/app_function.dart';
 import 'package:to_do_list/app/modules/home/controllers/home_controller.dart';
 
 import '../../../config/themes/app_theme.dart';
@@ -55,13 +56,27 @@ class _CollectionShapeState extends State<CollectionShape> {
             letterSpacing: 1,
           ),
         ),
-        subtitle: Text(
-          "${collection.description}",
-          style: TextStyle(
-            color: AppTheme.secondaryTextColor,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1,
-          ),
+        subtitle: Row(
+          children: [
+            Expanded(
+              child: Text(
+                "${collection.description}",
+                style: TextStyle(
+                  color: AppTheme.secondaryTextColor,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1,
+                ),
+              ),
+            ),
+            Text(
+              "${AppFunction.dateShape(collection.date!)}",
+              style: TextStyle(
+                color: AppTheme.secondaryTextColor,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 1,
+              ),
+            ),
+          ],
         ),
         trailing: IconButton(
           onPressed: onDelete,

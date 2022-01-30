@@ -33,11 +33,13 @@ class _DetailsState extends State<Details> {
   //final Collection collection;
   _DetailsState(this.controller);
 
-  late List<Collection> myList = [];
+  // late List<Collection> myList = [];
+  late DateTime selectedDate;
 
   @override
   void initState() {
     super.initState();
+    selectedDate = DateTime.now();
   }
 
   @override
@@ -81,57 +83,95 @@ class _DetailsState extends State<Details> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            Container(
-              //color: Colors.red.withOpacity(.1),
+            SizedBox(
               height: 50,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    decoration: BoxDecoration(
-                      color: AppTheme.mainColor.withOpacity(.25),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: AppTheme.mainColor, width: 2),
-                    ),
-                    child: Text(
-                      "Today",
-                      style: TextStyle(
-                        color: AppTheme.primaryTextColor,
-                        fontWeight: FontWeight.w900,
+                  GestureDetector(
+                    onTap: () {
+                      //selectedDate = DateTime.now();
+                      print(selectedDate);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      decoration: BoxDecoration(
+                        color: AppTheme.mainColor.withOpacity(.25),
+                        borderRadius: BorderRadius.circular(25),
+                        border: Border.all(color: AppTheme.mainColor, width: 2),
+                      ),
+                      child: Text(
+                        "Today",
+                        style: TextStyle(
+                          color: AppTheme.primaryTextColor,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    decoration: BoxDecoration(
-                      color: AppTheme.primaryColor.withOpacity(.25),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: AppTheme.primaryColor, width: 2),
-                    ),
-                    child: Text(
-                      "Tomorrow",
-                      style: TextStyle(
-                        color: AppTheme.primaryTextColor,
-                        fontWeight: FontWeight.w900,
+                  GestureDetector(
+                    onTap: () {
+                      selectedDate = DateTime.now().add(Duration(days: 1));
+                      print(selectedDate);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      decoration: BoxDecoration(
+                        color: AppTheme.primaryColor.withOpacity(.25),
+                        borderRadius: BorderRadius.circular(25),
+                        border: Border.all(color: AppTheme.primaryColor, width: 2),
+                      ),
+                      child: Text(
+                        "Tomorrow",
+                        style: TextStyle(
+                          color: AppTheme.primaryTextColor,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    decoration: BoxDecoration(
-                      color: AppTheme.secondaryColor.withOpacity(.25),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: AppTheme.secondaryColor, width: 2),
-                    ),
-                    child: Text(
-                      "Scheduled",
-                      style: TextStyle(
-                        color: AppTheme.primaryTextColor,
-                        fontWeight: FontWeight.w900,
+                  GestureDetector(
+                    onTap: () {
+                      FocusScope.of(context).unfocus();
+                      showModalBottomSheet(
+                        context: context,
+                        backgroundColor: AppTheme.primaryBackColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25),
+                            topRight: Radius.circular(25),
+                          ),
+                        ),
+                        builder: (BuildContext context) {
+                          return CupertinoDatePicker(
+                            onDateTimeChanged: (value) {
+                              selectedDate = value;
+                              print(selectedDate);
+                            },
+                            mode: CupertinoDatePickerMode.date,
+                            initialDateTime: DateTime.now(),
+                            minimumYear: DateTime.now().year,
+                            maximumYear: DateTime.now().year + 5,
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      decoration: BoxDecoration(
+                        color: AppTheme.secondaryColor.withOpacity(.25),
+                        borderRadius: BorderRadius.circular(25),
+                        border: Border.all(color: AppTheme.secondaryColor, width: 2),
+                      ),
+                      child: Text(
+                        "Scheduled",
+                        style: TextStyle(
+                          color: AppTheme.primaryTextColor,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ),
                   ),
