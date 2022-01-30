@@ -43,6 +43,7 @@ class AppTheme {
         titleTextStyle: TextStyle(
           color: primaryTextColor,
           fontWeight: FontWeight.w900,
+          letterSpacing: 1,
           fontSize: 20,
         ),
       ),

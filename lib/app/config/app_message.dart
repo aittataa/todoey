@@ -2,7 +2,7 @@ class AppMessage {
   AppMessage._();
 
   /// TODO : App Texts
-  static const String appTitle = "To-Do List";
+  static const String appTitle = "CheckList";
   static const String newTask = "New Task";
 
   /// TODO : App Icon

@@ -28,13 +28,11 @@ class _HomeState extends State<Home> {
       appBar: AppBar(title: Text(AppMessage.appTitle)),
       floatingActionButton: ActionButton(
         icon: CupertinoIcons.plus_app,
+        circular: 20,
         backgroundColor: AppTheme.mainColor,
         foregroundColor: AppTheme.primaryIconColor,
-        circular: 20,
         onPressed: () {
-          setState(() {
-            AppFunction.animateToPage(1);
-          });
+          setState(() => {AppFunction.animateToPage(1)});
         },
       ),
       body: SafeArea(
