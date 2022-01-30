@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'app/config/app_function.dart';
 import 'app/config/app_message.dart';
 import 'app/config/app_theme.dart';
-import 'app/modules/home/views/home_view.dart';
+import 'app/modules/home/pages/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,8 @@ class ToDoList extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: AppMessage.appTitle,
       theme: AppTheme.themeData,
-      home: HomeView(),
+      home: Splash(),
+      //home: HomeView(),
     );
   }
 }
