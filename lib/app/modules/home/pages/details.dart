@@ -90,7 +90,7 @@ class _DetailsState extends State<Details> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      //selectedDate = DateTime.now();
+                      selectedDate = DateTime.now();
                       print(selectedDate);
                     },
                     child: Container(
@@ -135,26 +135,11 @@ class _DetailsState extends State<Details> {
                   GestureDetector(
                     onTap: () {
                       FocusScope.of(context).unfocus();
-                      showModalBottomSheet(
-                        context: context,
-                        backgroundColor: AppTheme.primaryBackColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(25),
-                            topRight: Radius.circular(25),
-                          ),
-                        ),
-                        builder: (BuildContext context) {
-                          return CupertinoDatePicker(
-                            onDateTimeChanged: (value) {
-                              selectedDate = value;
-                              print(selectedDate);
-                            },
-                            mode: CupertinoDatePickerMode.date,
-                            initialDateTime: DateTime.now(),
-                            minimumYear: DateTime.now().year,
-                            maximumYear: DateTime.now().year + 5,
-                          );
+                      pickScheduledDate(
+                        context,
+                        onDateTimeChanged: (value) {
+                          selectedDate = value;
+                          print(selectedDate);
                         },
                       );
                     },
@@ -198,4 +183,26 @@ class _DetailsState extends State<Details> {
       ),
     );
   }
+}
+
+pickScheduledDate(context, {required Function(DateTime) onDateTimeChanged}) {
+  return showModalBottomSheet(
+    context: context,
+    backgroundColor: AppTheme.primaryBackColor,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(25),
+        topRight: Radius.circular(25),
+      ),
+    ),
+    builder: (BuildContext context) {
+      return CupertinoDatePicker(
+        onDateTimeChanged: onDateTimeChanged,
+        mode: CupertinoDatePickerMode.date,
+        initialDateTime: DateTime.now(),
+        minimumYear: DateTime.now().year,
+        maximumYear: DateTime.now().year + 5,
+      );
+    },
+  );
 }
