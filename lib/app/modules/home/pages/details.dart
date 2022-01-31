@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:to_do_list/app/config/app_constant.dart';
 
 import '../../../config/app_function.dart';
 import '../../../config/app_message.dart';
@@ -23,11 +24,13 @@ class _DetailsState extends State<Details> {
   _DetailsState(this.controller);
 
   late DateTime selectedDate;
+  late int stateDate;
 
   @override
   void initState() {
     super.initState();
     selectedDate = DateTime.now();
+    stateDate = -1;
   }
 
   @override
@@ -71,61 +74,44 @@ class _DetailsState extends State<Details> {
           });
         },
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
+      body: ListView(
+        children: [
+          SizedBox(
+            height: 50,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                DateShape(
+                  state: stateDate == 0,
+                  label: "Today",
+                  color: AppTheme.mainColor,
+                  onTap: () {
+                    setState(() {
+                      stateDate = 0;
                       selectedDate = DateTime.now();
                       print(selectedDate);
-                    },
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      decoration: BoxDecoration(
-                        color: AppTheme.mainColor.withOpacity(.25),
-                        borderRadius: BorderRadius.circular(25),
-                        border: Border.all(color: AppTheme.mainColor, width: 2),
-                      ),
-                      child: Text(
-                        "Today",
-                        style: TextStyle(
-                          color: AppTheme.primaryTextColor,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
+                    });
+                  },
+                ),
+                DateShape(
+                  state: stateDate == 1,
+                  label: "Tomorrow",
+                  color: AppTheme.primaryColor,
+                  onTap: () {
+                    setState(() {
+                      stateDate = 1;
                       selectedDate = DateTime.now().add(Duration(days: 1));
                       print(selectedDate);
-                    },
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      decoration: BoxDecoration(
-                        color: AppTheme.primaryColor.withOpacity(.25),
-                        borderRadius: BorderRadius.circular(25),
-                        border: Border.all(color: AppTheme.primaryColor, width: 2),
-                      ),
-                      child: Text(
-                        "Tomorrow",
-                        style: TextStyle(
-                          color: AppTheme.primaryTextColor,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
+                    });
+                  },
+                ),
+                DateShape(
+                  state: stateDate == 2,
+                  label: "Scheduled",
+                  color: AppTheme.secondaryColor,
+                  onTap: () {
+                    setState(() {
+                      stateDate = 2;
                       FocusScope.of(context).unfocus();
                       AppFunction.pickScheduledDate(
                         context,
@@ -134,42 +120,86 @@ class _DetailsState extends State<Details> {
                           print(selectedDate);
                         },
                       );
-                    },
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      decoration: BoxDecoration(
-                        color: AppTheme.secondaryColor.withOpacity(.25),
-                        borderRadius: BorderRadius.circular(25),
-                        border: Border.all(color: AppTheme.secondaryColor, width: 2),
-                      ),
-                      child: Text(
-                        "Scheduled",
-                        style: TextStyle(
-                          color: AppTheme.primaryTextColor,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+          FieldText(
+            controller: titleController,
+            hint: "Type Task Title",
+            onChanged: (value) {
+              setState(() {});
+            },
+          ),
+          FieldText(
+            controller: descController,
+            hint: "Description (OPTIONAL)",
+            maxLines: 5,
+            onChanged: (value) {
+              setState(() {});
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DateShape extends StatelessWidget {
+  final String label;
+  final Color color;
+  final bool state;
+  final Function()? onTap;
+  const DateShape({
+    Key? key,
+    required this.label,
+    required this.color,
+    this.state = false,
+    this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.all(5),
+        padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 5),
+        decoration: BoxDecoration(
+          color: color.withOpacity(.25),
+          borderRadius: BorderRadius.circular(25),
+          border: Border.all(color: color, width: 2),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              label,
+              style: TextStyle(
+                color: AppTheme.primaryTextColor,
+                fontWeight: FontWeight.w900,
               ),
             ),
-            FieldText(
-              controller: titleController,
-              hint: "Type Task Title",
-              onChanged: (value) {
-                setState(() {});
-              },
-            ),
-            FieldText(
-              controller: descController,
-              hint: "Description (OPTIONAL)",
-              maxLines: 5,
-              onChanged: (value) {
-                setState(() {});
-              },
-            ),
+            SizedBox(width: 10),
+            if (state)
+              AnimatedContainer(
+                padding: EdgeInsets.all(2.5),
+                alignment: Alignment.center,
+                duration: AppConstant.durationAnimated,
+                curve: AppConstant.curve,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: color,
+                  border: Border.all(width: 2, color: color),
+                ),
+                child: Icon(
+                  CupertinoIcons.checkmark_alt,
+                  color: AppTheme.primaryIconColor,
+                  size: 15,
+                ),
+              ),
           ],
         ),
       ),
