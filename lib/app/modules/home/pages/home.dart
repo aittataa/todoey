@@ -57,10 +57,11 @@ class _HomeState extends State<Home> {
                     controller: controller,
                     collection: collection,
                     onDelete: () async {
-                      final data = await controller.deleteCollection(collection);
+                      final int id = collection.id!;
+                      final data = await controller.deleteCollection(id);
                       setState(() {
                         collections.remove(collection);
-                        print(data);
+                        print(!(data == null));
                       });
                     },
                   );

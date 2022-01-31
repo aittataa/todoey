@@ -85,11 +85,9 @@ class _DetailsState extends State<Details> {
                   label: "Today",
                   color: AppTheme.mainColor,
                   onTap: () {
-                    setState(() {
-                      stateDate = 0;
-                      selectedDate = DateTime.now();
-                      print(selectedDate);
-                    });
+                    setState(() => {stateDate = 0});
+                    selectedDate = DateTime.now();
+                    print(selectedDate);
                   },
                 ),
                 DateShape(
@@ -97,11 +95,9 @@ class _DetailsState extends State<Details> {
                   label: "Tomorrow",
                   color: AppTheme.primaryColor,
                   onTap: () {
-                    setState(() {
-                      stateDate = 1;
-                      selectedDate = DateTime.now().add(Duration(days: 1));
-                      print(selectedDate);
-                    });
+                    setState(() => {stateDate = 1});
+                    selectedDate = DateTime.now().add(Duration(days: 1));
+                    print(selectedDate);
                   },
                 ),
                 DateShape(
@@ -109,17 +105,15 @@ class _DetailsState extends State<Details> {
                   label: "Scheduled",
                   color: AppTheme.secondaryColor,
                   onTap: () {
-                    setState(() {
-                      stateDate = 2;
-                      FocusScope.of(context).unfocus();
-                      AppFunction.pickScheduledDate(
-                        context,
-                        onDateTimeChanged: (value) {
-                          selectedDate = value;
-                          print(selectedDate);
-                        },
-                      );
-                    });
+                    setState(() => {stateDate = 2});
+                    FocusScope.of(context).unfocus();
+                    AppFunction.pickScheduledDate(
+                      context,
+                      onDateTimeChanged: (value) {
+                        selectedDate = value;
+                        print(selectedDate);
+                      },
+                    );
                   },
                 ),
               ],
