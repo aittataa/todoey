@@ -195,7 +195,7 @@ class DateShape extends StatelessWidget {
                   border: Border.all(width: 2, color: color),
                 ),
                 child: Icon(
-                  CupertinoIcons.checkmark_alt,
+                  CupertinoIcons.checkmark,
                   color: AppTheme.primaryIconColor,
                   size: 15,
                 ),
