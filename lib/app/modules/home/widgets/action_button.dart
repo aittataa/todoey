@@ -4,7 +4,7 @@ import '../../../config/app_message.dart';
 import '../../../config/app_theme.dart';
 
 class ActionButton extends StatelessWidget {
-  final IconData icon;
+  final IconData? icon;
   final Color backgroundColor;
   final Color foregroundColor;
   final double circular;
@@ -12,7 +12,7 @@ class ActionButton extends StatelessWidget {
 
   const ActionButton({
     Key? key,
-    required this.icon,
+    this.icon,
     required this.backgroundColor,
     required this.foregroundColor,
     this.circular = 100,

@@ -27,7 +27,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(title: Text(AppMessage.appTitle)),
       floatingActionButton: ActionButton(
-        icon: CupertinoIcons.plus_app,
         circular: 20,
         backgroundColor: AppTheme.mainColor,
         foregroundColor: AppTheme.primaryIconColor,
