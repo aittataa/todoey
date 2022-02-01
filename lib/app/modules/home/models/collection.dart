@@ -35,8 +35,8 @@ class Collection {
       "title": title,
       "description": description,
       "date": date!.toIso8601String(),
-      "status": status ?? 0,
-      "collection_id": collectionId ?? 0,
+      "status": status! ? 1 : 0,
+      "collection_id": collectionId,
     };
   }
 

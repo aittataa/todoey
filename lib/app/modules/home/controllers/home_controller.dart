@@ -22,19 +22,19 @@ class HomeController extends GetxController {
 
   createCollection(Collection collection) async {
     final response = await _provider.createCollection(collection);
-    _getCollections;
+    //_getCollections;
     return response;
   }
 
   updateCollection(Collection collection) async {
     final response = await _provider.updateCollection(collection);
-    _getCollections;
+    //_getCollections;
     return response;
   }
 
   deleteCollection(int id) async {
     final response = await _provider.deleteCollection(id);
-    _getCollections;
+    //_getCollections;
     return response;
   }
 }

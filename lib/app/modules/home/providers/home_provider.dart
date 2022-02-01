@@ -21,22 +21,22 @@ class HomeProvider extends GetConnect {
       $_id INTEGER PRIMARY KEY AUTOINCREMENT,
       $_title TEXT NOT NULL,
       $_description TEXT,
-      $_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-      $_status BIT DEFAULT 0,
+      $_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      $_status INTEGER DEFAULT 0,
       $_collection_id INTEGER DEFAULT 0
   );''';
 
   static const String _tbl_collections_data_query = '''
-  INSERT INTO $_tbl_collections($_id, $_title, $_description, $_collection_id)VALUES
-             (1, 'Collection 1', '1 Collections Description', 0),
-             (2, 'Collection 2', '2 Collections Description', 0),
-             (3, 'Collection 3', '3 Collections Description', 0),
-             (4, 'Collection 4', '4 Collections Description', 0),
-             (5, 'Collection 5', '5 Collections Description', 0),
-             (6, 'Collection 6', '6 Collections Description', 0),
-             (7, 'Collection 7', '7 Collections Description', 0),
-             (8, 'Collection 8', '8 Collections Description', 0),
-             (9, 'Collection 9', '9 Collections Description', 0);
+  INSERT INTO $_tbl_collections($_id, $_title, $_description)VALUES
+             (1, 'Collection 1', 'Description 1'),
+             (2, 'Collection 2', 'Description 2'),
+             (3, 'Collection 3', 'Description 3'),
+             (4, 'Collection 4', 'Description 4'),
+             (5, 'Collection 5', 'Description 5'),
+             (6, 'Collection 6', 'Description 6'),
+             (7, 'Collection 7', 'Description 7'),
+             (8, 'Collection 8', 'Description 8'),
+             (9, 'Collection 9', 'Description 9');
   ''';
 
   Future<Database> get _database async {
