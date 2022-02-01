@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -60,7 +59,7 @@ class _HomeState extends State<Home> {
                       final int id = collection.id!;
                       final data = await controller.deleteCollection(id);
                       setState(() {
-                        collections.remove(collection);
+                        print(collections.remove(collection));
                         print(data);
                       });
                     },
