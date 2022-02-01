@@ -7,16 +7,16 @@ class Collection {
   final String? title;
   final String? description;
   final DateTime? date;
-  late bool? status;
-  final int? collectionId;
+  late bool status;
+  final int collectionId;
 
   Collection({
     this.id,
     this.title,
     this.description,
     this.date,
-    this.status,
-    this.collectionId,
+    this.status = false,
+    this.collectionId = 0,
   });
 
   factory Collection.fromMap(Map<String, dynamic> map) {
@@ -35,10 +35,10 @@ class Collection {
       "title": title,
       "description": description,
       "date": date!.toIso8601String(),
-      "status": status! ? 1 : 0,
+      "status": status ? 1 : 0,
       "collection_id": collectionId,
     };
   }
 
-  get updateStatus => {status = !status!};
+  get updateStatus => {status = !status};
 }

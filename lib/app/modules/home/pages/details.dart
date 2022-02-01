@@ -73,7 +73,7 @@ class _DetailsState extends State<Details> {
           });
         },
       ),
-      body: ListView(
+      body: Column(
         children: [
           SizedBox(
             height: 50,

@@ -30,7 +30,7 @@ class _CollectionShapeState extends State<CollectionShape> {
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: collection.status! ? .5 : 1,
+      opacity: collection.status ? .5 : 1,
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
@@ -43,7 +43,7 @@ class _CollectionShapeState extends State<CollectionShape> {
           contentPadding: EdgeInsets.zero,
           minLeadingWidth: 0,
           leading: CheckedBox(
-            state: collection.status!,
+            state: collection.status,
             onTap: () async {
               setState(() => {collection.updateStatus});
               final data = await controller.updateCollection(collection);
