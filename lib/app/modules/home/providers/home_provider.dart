@@ -27,16 +27,16 @@ class HomeProvider extends GetConnect {
   );''';
 
   static const String _tbl_collections_data_query = '''
-  INSERT INTO $_tbl_collections($_id, $_title, $_description)VALUES
-             (1, 'Collection 1', 'Description 1'),
-             (2, 'Collection 2', 'Description 2'),
-             (3, 'Collection 3', 'Description 3'),
-             (4, 'Collection 4', 'Description 4'),
-             (5, 'Collection 5', 'Description 5'),
-             (6, 'Collection 6', 'Description 6'),
-             (7, 'Collection 7', 'Description 7'),
-             (8, 'Collection 8', 'Description 8'),
-             (9, 'Collection 9', 'Description 9');
+  INSERT INTO $_tbl_collections($_title, $_description)VALUES
+             ('Collection 1', 'Description 1'),
+             ('Collection 2', 'Description 2'),
+             ('Collection 3', 'Description 3'),
+             ('Collection 4', 'Description 4'),
+             ('Collection 5', 'Description 5'),
+             ('Collection 6', 'Description 6'),
+             ('Collection 7', 'Description 7'),
+             ('Collection 8', 'Description 8'),
+             ('Collection 9', 'Description 9');
   ''';
 
   Future<Database> get _database async {
@@ -45,7 +45,7 @@ class HomeProvider extends GetConnect {
       version: 1,
       onCreate: (db, version) async {
         await db.execute(_tbl_collections_query);
-        await db.execute(_tbl_collections_data_query);
+        //await db.execute(_tbl_collections_data_query);
       },
     );
   }
