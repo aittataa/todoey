@@ -40,7 +40,8 @@ class _HomeState extends State<Home> {
             return BouncePoint();
           } else {
             final List<Collection> collections = controller.collections;
-            final bool isEmpty = collections.isEmpty;
+            final List<Collection> myList = collections..sort((a, b) => b.id!.compareTo(a.id!));
+            final bool isEmpty = myList.isEmpty;
             if (isEmpty) {
               return EmptyBox();
             } else {
@@ -49,17 +50,17 @@ class _HomeState extends State<Home> {
                 padding: EdgeInsets.all(10),
                 scrollDirection: Axis.vertical,
                 physics: BouncingScrollPhysics(),
-                itemCount: collections.length,
+                itemCount: myList.length,
                 itemBuilder: (context, i) {
-                  final Collection collection = collections[i];
+                  final Collection collection = myList[i];
                   return CollectionShape(
                     controller: controller,
                     collection: collection,
-                    onDelete: () async {
+                    onPressed: () async {
                       final int id = collection.id!;
                       final data = await controller.deleteCollection(id);
                       setState(() {
-                        print(collections.remove(collection));
+                        print(myList.remove(collection));
                         print(data);
                       });
                     },

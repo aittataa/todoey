@@ -86,6 +86,7 @@ class HomeProvider extends GetConnect {
       where: "$_id = ?",
       whereArgs: [id],
     );
+    print(id);
     return response;
   }
 }

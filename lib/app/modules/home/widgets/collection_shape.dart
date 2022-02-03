@@ -11,14 +11,14 @@ import 'checked_box.dart';
 class CollectionShape extends StatefulWidget {
   final HomeController controller;
   final Collection collection;
-  final Function()? onDelete;
+  final Function()? onPressed;
   const CollectionShape({
     required this.controller,
     required this.collection,
-    this.onDelete,
+    this.onPressed,
   });
   @override
-  State<CollectionShape> createState() => _CollectionShapeState(controller, collection, onDelete);
+  State<CollectionShape> createState() => _CollectionShapeState(controller, collection, onPressed);
 }
 
 class _CollectionShapeState extends State<CollectionShape> {
