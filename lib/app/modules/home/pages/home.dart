@@ -69,20 +69,30 @@ class _HomeState extends State<Home> {
                 },
               );
               */
-              return GroupedListView<dynamic, String>(
-                elements: myList,
-                groupBy: (collection) => collection.title,
-                groupSeparatorBuilder: (String groupByValue) => Text(groupByValue),
-                itemBuilder: (context, collection) => Text(collection.title),
-                itemComparator: (a, b) => b.title!.compareTo(a.title!), // optional
-                useStickyGroupSeparators: true, // optional
-                floatingHeader: true, // optional
-                order: GroupedListOrder.ASC, // optional
-              );
+              return HomeBody(myList: myList);
             }
           }
         }),
       ),
+    );
+  }
+}
+
+class HomeBody extends StatelessWidget {
+  final List<Collection> myList;
+  const HomeBody({Key? key, required this.myList}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GroupedListView<dynamic, String>(
+      elements: myList,
+      groupBy: (collection) => collection.title,
+      groupSeparatorBuilder: (String groupByValue) => Text(groupByValue),
+      itemBuilder: (context, collection) => Text(collection.title),
+      itemComparator: (a, b) => b.title.compareTo(a.title), // optional
+      useStickyGroupSeparators: true, // optional
+      floatingHeader: true, // optional
+      order: GroupedListOrder.ASC, // optional
     );
   }
 }
