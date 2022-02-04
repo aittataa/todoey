@@ -12,15 +12,16 @@ dependencies:
   flutter_spinkit: 5.1.0
   google_fonts: 2.2.0
   intl: 0.17.0
-  flutter:
+  grouped_list: 4.2.0
+  flutter: 
     sdk: flutter
 
-dev_dependencies:
-  flutter_test:
+dev_dependencies: 
+  flutter_test: 
     sdk: flutter
 
-flutter:
-  uses-material-design: true
-  assets:
+flutter: 
+  assets: 
     - assets/
+  uses-material-design: true
 

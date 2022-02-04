@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grouped_list/grouped_list.dart';
 
 import '../../../config/app_function.dart';
 import '../../../config/app_message.dart';
@@ -8,7 +9,6 @@ import '../controllers/home_controller.dart';
 import '../models/collection.dart';
 import '../widgets/action_button.dart';
 import '../widgets/bounce_point.dart';
-import '../widgets/collection_shape.dart';
 import '../widgets/empty_box.dart';
 
 class Home extends StatefulWidget {
@@ -45,6 +45,7 @@ class _HomeState extends State<Home> {
             if (isEmpty) {
               return EmptyBox();
             } else {
+              /*
               return ListView.builder(
                 shrinkWrap: true,
                 padding: EdgeInsets.all(10),
@@ -66,6 +67,17 @@ class _HomeState extends State<Home> {
                     },
                   );
                 },
+              );
+              */
+              return GroupedListView<dynamic, String>(
+                elements: myList,
+                groupBy: (collection) => collection.title,
+                groupSeparatorBuilder: (String groupByValue) => Text(groupByValue),
+                itemBuilder: (context, collection) => Text(collection.title),
+                itemComparator: (a, b) => b.title!.compareTo(a.title!), // optional
+                useStickyGroupSeparators: true, // optional
+                floatingHeader: true, // optional
+                order: GroupedListOrder.ASC, // optional
               );
             }
           }
