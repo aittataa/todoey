@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grouped_list/grouped_list.dart';
+import 'package:to_do_list/app/modules/home/widgets/collection_shape.dart';
 
 import '../../../config/app_function.dart';
 import '../../../config/app_message.dart';
@@ -39,15 +39,16 @@ class _HomeState extends State<Home> {
           if (state) {
             return BouncePoint();
           } else {
-            // final map = controller.collectionsss;
             final List<Collection> collections = controller.collections;
-            final List<Collection> myList = collections..sort((a, b) => b.id!.compareTo(a.id!));
-            final bool isEmpty = myList.isEmpty;
+            // final List<Collection> myList = collections..sort((a, b) => b.id!.compareTo(a.id!));
+            final bool isEmpty = collections.isEmpty;
             if (isEmpty) {
               return EmptyBox();
             } else {
-              return HomeBody(myList: myList);
-              // return SizedBox();
+              return HomeBody(
+                controller: controller,
+                myList: collections..sort((a, b) => b.id!.compareTo(a.id!)),
+              );
             }
           }
         }),
@@ -57,8 +58,9 @@ class _HomeState extends State<Home> {
 }
 
 class HomeBody extends StatelessWidget {
+  final HomeController controller;
   final List<Collection> myList;
-  const HomeBody({Key? key, required this.myList}) : super(key: key);
+  const HomeBody({Key? key, required this.controller, required this.myList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +96,7 @@ class HomeBody extends StatelessWidget {
       //
     );*/
 
-    return GroupedListView<dynamic, DateTime>(
+    /*return GroupedListView<dynamic, DateTime>(
       elements: myList,
       groupBy: (collection) => collection.date,
       groupSeparatorBuilder: (DateTime date) => GroupSeparator(date: date),
@@ -104,9 +106,9 @@ class HomeBody extends StatelessWidget {
       useStickyGroupSeparators: true, // optional
       floatingHeader: true, // optional
       //
-    );
+    );*/
 
-    /*return ListView.builder(
+    return ListView.builder(
       shrinkWrap: true,
       padding: EdgeInsets.all(10),
       scrollDirection: Axis.vertical,
@@ -120,14 +122,14 @@ class HomeBody extends StatelessWidget {
           onPressed: () async {
             final int id = collection.id!;
             final data = await controller.deleteCollection(id);
-            setState(() {
-              print(myList.remove(collection));
-              print(data);
-            });
+            // setState(() {
+            print(myList.remove(collection));
+            print(data);
+            // });
           },
         );
       },
-    );*/
+    );
   }
 }
 
