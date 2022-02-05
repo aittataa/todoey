@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:to_do_list/app/modules/home/widgets/home_body.dart';
 
 import '../../../config/app_function.dart';
 import '../../../config/app_message.dart';
@@ -10,6 +9,7 @@ import '../models/collection.dart';
 import '../widgets/action_button.dart';
 import '../widgets/bounce_point.dart';
 import '../widgets/empty_box.dart';
+import '../widgets/home_body.dart';
 
 class Home extends StatefulWidget {
   final HomeController controller;

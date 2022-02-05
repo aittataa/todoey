@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list/app/modules/home/controllers/home_controller.dart';
-import 'package:to_do_list/app/modules/home/models/collection.dart';
 
+import '../controllers/home_controller.dart';
+import '../models/collection.dart';
 import 'collection_shape.dart';
 
 class Body extends StatefulWidget {
