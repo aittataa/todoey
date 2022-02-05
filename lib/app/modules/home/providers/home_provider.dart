@@ -56,7 +56,20 @@ class HomeProvider extends GetConnect {
       _tbl_collections,
       orderBy: "$_id DESC",
     );
+    //print(response);
+    // return response;
     return collectionsFromMap(response);
+  }
+
+  get getCollectionsss async {
+    final db = await _database;
+    final /*List<Map<String, dynamic>>*/ response = await db.query(
+      _tbl_collections,
+      orderBy: "$_id DESC",
+    );
+    print(response);
+    return response;
+    // return collectionsFromMap(response);
   }
 
   Future createCollection(Collection collection) async {

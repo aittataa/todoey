@@ -39,37 +39,15 @@ class _HomeState extends State<Home> {
           if (state) {
             return BouncePoint();
           } else {
+            // final map = controller.collectionsss;
             final List<Collection> collections = controller.collections;
             final List<Collection> myList = collections..sort((a, b) => b.id!.compareTo(a.id!));
             final bool isEmpty = myList.isEmpty;
             if (isEmpty) {
               return EmptyBox();
             } else {
-              /*
-              return ListView.builder(
-                shrinkWrap: true,
-                padding: EdgeInsets.all(10),
-                scrollDirection: Axis.vertical,
-                physics: BouncingScrollPhysics(),
-                itemCount: myList.length,
-                itemBuilder: (context, i) {
-                  final Collection collection = myList[i];
-                  return CollectionShape(
-                    controller: controller,
-                    collection: collection,
-                    onPressed: () async {
-                      final int id = collection.id!;
-                      final data = await controller.deleteCollection(id);
-                      setState(() {
-                        print(myList.remove(collection));
-                        print(data);
-                      });
-                    },
-                  );
-                },
-              );
-              */
               return HomeBody(myList: myList);
+              // return SizedBox();
             }
           }
         }),
@@ -84,15 +62,78 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GroupedListView<dynamic, String>(
+    /*return GroupListView(
+      sectionsCount: myList.length,
+      countOfItemInSection: (int section) {
+        return myList.length;
+      },
+      itemBuilder: (BuildContext context, IndexPath index) {
+        return Text(
+          myList[index.section].title!,
+          style: TextStyle(color: Colors.red, fontSize: 18),
+        );
+      },
+      groupHeaderBuilder: (BuildContext context, int section) {
+        return Text(
+          myList[section].date.toString(),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        );
+      },
+      separatorBuilder: (context, index) => SizedBox(height: 10),
+      sectionSeparatorBuilder: (context, section) => SizedBox(height: 10),
+    );*/
+
+    return GroupedListView<dynamic, DateTime>(
       elements: myList,
-      groupBy: (collection) => collection.title,
-      groupSeparatorBuilder: (String groupByValue) => Text(groupByValue),
-      itemBuilder: (context, collection) => Text(collection.title),
-      itemComparator: (a, b) => b.title.compareTo(a.title), // optional
+      groupBy: (collection) => collection.date,
+      groupSeparatorBuilder: (DateTime date) => GroupSeparator(date: date),
+      order: GroupedListOrder.ASC, // optional
+      itemBuilder: (context, dynamic collection) => Text(collection.title!),
+      // itemComparator: (a, b) => b.title!.compareTo(a.title!), // optional
       useStickyGroupSeparators: true, // optional
       floatingHeader: true, // optional
-      order: GroupedListOrder.ASC, // optional
+      //
+    );
+
+    /*return ListView.builder(
+      shrinkWrap: true,
+      padding: EdgeInsets.all(10),
+      scrollDirection: Axis.vertical,
+      physics: BouncingScrollPhysics(),
+      itemCount: myList.length,
+      itemBuilder: (context, i) {
+        final Collection collection = myList[i];
+        return CollectionShape(
+          controller: controller,
+          collection: collection,
+          onPressed: () async {
+            final int id = collection.id!;
+            final data = await controller.deleteCollection(id);
+            setState(() {
+              print(myList.remove(collection));
+              print(data);
+            });
+          },
+        );
+      },
+    );*/
+  }
+}
+
+class GroupSeparator extends StatelessWidget {
+  final DateTime date;
+  const GroupSeparator({Key? key, required this.date}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Padding(
+        padding: EdgeInsets.only(left: 16, top: 8, bottom: 8),
+        child: Text(
+          "${this.date.day}/${this.date.month}/${this.date.year}",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+      ),
     );
   }
 }
