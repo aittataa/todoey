@@ -64,23 +64,34 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     /*return GroupListView(
       sectionsCount: myList.length,
-      countOfItemInSection: (int section) {
+      countOfItemInSection: (section) {
         return myList.length;
       },
-      itemBuilder: (BuildContext context, IndexPath index) {
+      groupHeaderBuilder: (context, index) {
+        return Text(
+          myList[index].date.toString(),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        );
+      },
+      itemBuilder: (context, index) {
         return Text(
           myList[index.section].title!,
           style: TextStyle(color: Colors.red, fontSize: 18),
         );
       },
-      groupHeaderBuilder: (BuildContext context, int section) {
-        return Text(
-          myList[section].date.toString(),
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-        );
-      },
       separatorBuilder: (context, index) => SizedBox(height: 10),
       sectionSeparatorBuilder: (context, section) => SizedBox(height: 10),
+    );*/
+    /*return StickyGroupedListView<dynamic, DateTime>(
+      elements: myList,
+      groupBy: (collection) => collection.date,
+      groupSeparatorBuilder: (date) => GroupSeparator(date: date),
+      order: StickyGroupedListOrder.ASC, // optional
+      itemBuilder: (context, dynamic collection) => Text(collection.title!),
+      // itemComparator: (a, b) => b.title!.compareTo(a.title!), // optional
+      // useStickyGroupSeparators: true, // optional
+      floatingHeader: true, // optional
+      //
     );*/
 
     return GroupedListView<dynamic, DateTime>(
@@ -89,7 +100,7 @@ class HomeBody extends StatelessWidget {
       groupSeparatorBuilder: (DateTime date) => GroupSeparator(date: date),
       order: GroupedListOrder.ASC, // optional
       itemBuilder: (context, dynamic collection) => Text(collection.title!),
-      // itemComparator: (a, b) => b.title!.compareTo(a.title!), // optional
+      itemComparator: (a, b) => b.date!.compareTo(a.date!), // optional
       useStickyGroupSeparators: true, // optional
       floatingHeader: true, // optional
       //
