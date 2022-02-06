@@ -58,7 +58,11 @@ class _HomeState extends State<Home> {
                 );
               },
               groupSeparatorBuilder: (DateTime date) {
-                return DateItem(date: date);
+                // final bool state = date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+                if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day))
+                  return DateItem(state: true, date: date);
+                else
+                  return DateItem(state: false, date: date);
               },
               itemBuilder: (context, collection) {
                 return CollectionShape(
@@ -66,12 +70,10 @@ class _HomeState extends State<Home> {
                   collection: collection,
                   onPressed: () async {
                     final int id = collection.id!;
-                    // print(id);
-                    final data = await controller.deleteCollection(id);
                     setState(() {
-                      // collections.remove(collection);
                       print(collections.remove(collection));
                     });
+                    final data = await controller.deleteCollection(id);
                   },
                 );
               },
