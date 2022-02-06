@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
-import 'package:to_do_list/app/modules/home/widgets/collection_shape.dart';
-import 'package:to_do_list/app/modules/home/widgets/date_item.dart';
 
 import '../../../config/app_function.dart';
 import '../../../config/app_message.dart';
@@ -10,6 +8,8 @@ import '../controllers/home_controller.dart';
 import '../models/collection.dart';
 import '../widgets/action_button.dart';
 import '../widgets/bounce_point.dart';
+import '../widgets/collection_shape.dart';
+import '../widgets/date_item.dart';
 import '../widgets/empty_box.dart';
 
 class Home extends StatefulWidget {

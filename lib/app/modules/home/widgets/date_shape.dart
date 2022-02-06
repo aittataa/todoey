@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:to_do_list/app/config/app_constant.dart';
-import 'package:to_do_list/app/config/app_theme.dart';
+
+import '../../../config/app_constant.dart';
+import '../../../config/app_theme.dart';
 
 class DateShape extends StatelessWidget {
   final String label;

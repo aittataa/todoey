@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:to_do_list/app/config/app_function.dart';
-import 'package:to_do_list/app/config/app_theme.dart';
+
+import '../../../config/app_function.dart';
+import '../../../config/app_theme.dart';
 
 class DateItem extends StatelessWidget {
   final DateTime date;

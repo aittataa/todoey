@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,8 +9,6 @@ import 'app_theme.dart';
 
 class AppFunction {
   AppFunction._();
-
-  static int get getRandomColor => Color(Random().nextInt(0xFFFFFFFF)).withAlpha(0xFF).value;
 
   static String dateShape(DateTime date) => DateFormat('MMM dd, yyyy').format(date);
   static String timeShape(DateTime date) => DateFormat('HH:mm').format(date);
