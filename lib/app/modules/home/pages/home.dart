@@ -66,10 +66,11 @@ class _HomeState extends State<Home> {
                   collection: collection,
                   onPressed: () async {
                     final int id = collection.id!;
+                    // print(id);
                     final data = await controller.deleteCollection(id);
                     setState(() {
+                      // collections.remove(collection);
                       print(collections.remove(collection));
-                      print(data);
                     });
                   },
                 );

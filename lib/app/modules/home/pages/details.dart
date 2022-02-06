@@ -65,7 +65,7 @@ class _DetailsState extends State<Details> {
               date: selectedDate,
             );
             final data = await controller.createCollection(collection);
-            print(data);
+            //print(data);
           }
           setState(() {
             FocusScope.of(context).unfocus();
@@ -87,7 +87,7 @@ class _DetailsState extends State<Details> {
                   onTap: () {
                     setState(() => {stateDate = 0});
                     selectedDate = DateTime.now();
-                    print(selectedDate);
+                    //print(selectedDate);
                   },
                 ),
                 DateShape(
@@ -97,7 +97,7 @@ class _DetailsState extends State<Details> {
                   onTap: () {
                     setState(() => {stateDate = 1});
                     selectedDate = DateTime.now().add(Duration(days: 1));
-                    print(selectedDate);
+                    //print(selectedDate);
                   },
                 ),
                 DateShape(
@@ -111,7 +111,7 @@ class _DetailsState extends State<Details> {
                       context,
                       onDateTimeChanged: (value) {
                         selectedDate = value;
-                        print(selectedDate);
+                        //print(selectedDate);
                       },
                     );
                   },

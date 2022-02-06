@@ -47,7 +47,7 @@ class _CollectionShapeState extends State<CollectionShape> {
             onTap: () async {
               setState(() => {collection.updateStatus});
               final data = await controller.updateCollection(collection);
-              print(data);
+              //print(data);
             },
           ),
           title: Text(

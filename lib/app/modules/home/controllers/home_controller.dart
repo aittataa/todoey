@@ -34,7 +34,7 @@ class HomeController extends GetxController {
 
   deleteCollection(int id) async {
     final response = await _provider.deleteCollection(id);
-    _getCollections;
+    //_getCollections;
     return response;
   }
 }
