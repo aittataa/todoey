@@ -6,8 +6,6 @@ import '../providers/home_provider.dart';
 class HomeController extends GetxController {
   final HomeProvider _provider = Get.put(HomeProvider());
   var collections = <Collection>[].obs;
-  var collectionsss = <Map<String, dynamic>>[].obs;
-  // var collectionsss = <Map<String, dynamic>>[].obs;
   final state = false.obs;
 
   @override
@@ -19,7 +17,6 @@ class HomeController extends GetxController {
   get _getCollections async {
     state.value = true;
     collections.value = await _provider.getCollections;
-    collectionsss.value = await _provider.getCollectionsss;
     state.value = false;
   }
 
