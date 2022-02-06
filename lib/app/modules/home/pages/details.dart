@@ -65,7 +65,7 @@ class _DetailsState extends State<Details> {
               date: selectedDate,
             );
             final data = await controller.createCollection(collection);
-            //print(data);
+            print(data);
           }
           setState(() {
             FocusScope.of(context).unfocus();
