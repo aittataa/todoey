@@ -58,11 +58,15 @@ class _HomeState extends State<Home> {
                 );
               },
               groupSeparatorBuilder: (DateTime date) {
-                // final bool state = date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-                if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day))
-                  return DateItem(state: true, date: date);
-                else
-                  return DateItem(state: false, date: date);
+                if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1)) {
+                  return DateItem(label: "Yesterday", date: date);
+                } else if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day)) {
+                  return DateItem(label: "Today", date: date);
+                } else if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1)) {
+                  return DateItem(label: "Tomorrow", date: date);
+                } else {
+                  return DateItem(label: AppFunction.dateShape(date), date: date);
+                }
               },
               itemBuilder: (context, collection) {
                 return CollectionShape(
@@ -70,10 +74,9 @@ class _HomeState extends State<Home> {
                   collection: collection,
                   onPressed: () async {
                     final int id = collection.id!;
-                    setState(() {
-                      print(collections.remove(collection));
-                    });
+                    setState(() => {print(collections.remove(collection))});
                     final data = await controller.deleteCollection(id);
+                    setState(() => {print(data)});
                   },
                 );
               },
