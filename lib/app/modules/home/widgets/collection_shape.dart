@@ -72,7 +72,7 @@ class _CollectionShapeState extends State<CollectionShape> {
                 ),
               ),
               Text(
-                "${AppFunction.dateShape(collection.date!)}",
+                "${AppFunction.timeShape(collection.date!)}",
                 style: TextStyle(
                   color: AppTheme.secondaryTextColor,
                   fontWeight: FontWeight.w900,

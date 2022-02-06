@@ -24,6 +24,7 @@ class AppTheme {
   static const Color secondaryIconColor = Color(0xFF000000);
 
   /// TODO : Texts
+  static const Color textColor = Color(0xFFFFFFFF);
   static const Color primaryTextColor = Color(0xFF211551);
   static const Color secondaryTextColor = Color(0xFF86829D);
 
