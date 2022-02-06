@@ -46,6 +46,8 @@ class _HomeState extends State<Home> {
           } else {
             return GroupedListView<dynamic, DateTime>(
               shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              physics: const BouncingScrollPhysics(),
               elements: collections,
               order: GroupedListOrder.DESC,
               groupBy: (collection) {
