@@ -39,4 +39,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/android/key.properties
+/android/app/check_list.jks
 /details.txt
