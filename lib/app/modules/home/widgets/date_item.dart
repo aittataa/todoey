@@ -24,8 +24,7 @@ class DateItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(25),
         ),
         child: Text(
-          label,
-          // "${AppFunction.dateShape(date)}",
+          "${label}",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: AppTheme.textColor,
