@@ -27,16 +27,16 @@ class HomeProvider extends GetConnect {
   );''';
 
   static const String _tbl_collections_data_query = '''
-  INSERT INTO $_tbl_collections($_title, $_description)VALUES
-             ('Collection 1', 'Description 1'),
-             ('Collection 2', 'Description 2'),
-             ('Collection 3', 'Description 3'),
-             ('Collection 4', 'Description 4'),
-             ('Collection 5', 'Description 5'),
-             ('Collection 6', 'Description 6'),
-             ('Collection 7', 'Description 7'),
-             ('Collection 8', 'Description 8'),
-             ('Collection 9', 'Description 9');
+  INSERT INTO $_tbl_collections($_title, $_description, $_date)VALUES
+       ('Collection 1', 'Description 1', '2022-02-06 13:00:00'),
+       ('Collection 2', 'Description 2', '2022-02-07 14:11:00'),
+       ('Collection 3', 'Description 3', '2022-02-07 15:13:00'),
+       ('Collection 4', 'Description 4', '2022-02-08 15:45:00'),
+       ('Collection 5', 'Description 5', '2022-02-08 16:28:00'),
+       ('Collection 6', 'Description 6', '2022-02-09 13:09:00'),
+       ('Collection 7', 'Description 7', '2022-02-05 17:36:00'),
+       ('Collection 8', 'Description 8', '2022-02-01 18:40:00'),
+       ('Collection 9', 'Description 9', '2022-02-02 19:55:00');
   ''';
 
   Future<Database> get _database async {

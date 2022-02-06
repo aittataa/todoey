@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
-import 'package:to_do_list/app/config/app_function.dart';
-import 'package:to_do_list/app/config/app_theme.dart';
 
 import '../controllers/home_controller.dart';
 import '../models/collection.dart';
 import 'collection_shape.dart';
+import 'date_item.dart';
 
 class Body extends StatefulWidget {
   final HomeController controller;
@@ -25,15 +24,17 @@ class _BodyState extends State<Body> {
     if (state) {
       return GroupedListView<dynamic, DateTime>(
         shrinkWrap: true,
-        padding: EdgeInsets.all(10),
-        scrollDirection: Axis.vertical,
         elements: myList,
         order: GroupedListOrder.DESC,
         groupBy: (collection) {
-          return collection.date;
+          return DateTime.utc(
+            collection.date.year,
+            collection.date.month,
+            collection.date.day,
+          );
         },
         groupSeparatorBuilder: (DateTime date) {
-          return DateShape(date: date);
+          return DateItem(date: date);
         },
         itemBuilder: (context, collection) {
           return CollectionShape(
@@ -74,34 +75,5 @@ class _BodyState extends State<Body> {
         },
       );
     }
-  }
-}
-
-class DateShape extends StatelessWidget {
-  final DateTime date;
-  const DateShape({
-    Key? key,
-    required this.date,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        margin: EdgeInsets.all(5),
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        decoration: BoxDecoration(
-          color: AppTheme.mainColor,
-          borderRadius: BorderRadius.circular(25),
-        ),
-        child: Text(
-          "${AppFunction.dateShape(date)}",
-          style: TextStyle(
-            color: AppTheme.textColor,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-      ),
-    );
   }
 }
