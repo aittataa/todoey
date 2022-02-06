@@ -82,36 +82,33 @@ class _DetailsState extends State<Details> {
               children: [
                 DateShape(
                   state: stateDate == 0,
-                  label: "Today",
+                  label: AppMessage.labelToday,
                   color: AppTheme.mainColor,
                   onTap: () {
                     setState(() => {stateDate = 0});
                     selectedDate = DateTime.now();
-                    //print(selectedDate);
                   },
                 ),
                 DateShape(
                   state: stateDate == 1,
-                  label: "Tomorrow",
+                  label: AppMessage.labelTomorrow,
                   color: AppTheme.primaryColor,
                   onTap: () {
                     setState(() => {stateDate = 1});
                     selectedDate = DateTime.now().add(Duration(days: 1));
-                    //print(selectedDate);
                   },
                 ),
                 DateShape(
                   state: stateDate == 2,
-                  label: "Scheduled",
+                  label: AppMessage.labelScheduled,
                   color: AppTheme.secondaryColor,
                   onTap: () {
                     setState(() => {stateDate = 2});
                     FocusScope.of(context).unfocus();
                     AppFunction.pickScheduledDate(
                       context,
-                      onDateTimeChanged: (value) {
-                        selectedDate = value;
-                        //print(selectedDate);
+                      onDateTimeChanged: (DateTime date) {
+                        selectedDate = DateTime.utc(date.year, date.month, date.day, DateTime.now().hour, DateTime.now().minute, DateTime.now().second);
                       },
                     );
                   },
@@ -121,14 +118,14 @@ class _DetailsState extends State<Details> {
           ),
           FieldText(
             controller: titleController,
-            hint: "Type Task Title",
+            hint: AppMessage.hintTitle,
             onChanged: (value) {
               setState(() {});
             },
           ),
           FieldText(
             controller: descController,
-            hint: "Description (OPTIONAL)",
+            hint: AppMessage.hintDescription,
             maxLines: 5,
             onChanged: (value) {
               setState(() {});

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import 'app_constant.dart';
+import 'app_message.dart';
 import 'app_theme.dart';
 
 class AppFunction {
@@ -24,12 +25,47 @@ class AppFunction {
         ),
       ),
       builder: (BuildContext context) {
-        return CupertinoDatePicker(
-          onDateTimeChanged: onDateTimeChanged,
-          mode: CupertinoDatePickerMode.date,
-          initialDateTime: DateTime.now(),
-          minimumYear: DateTime.now().year,
-          maximumYear: DateTime.now().year + 5,
+        return Column(
+          children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () => Navigator.pop(context),
+                padding: EdgeInsets.all(25),
+                color: AppTheme.secondaryIconColor,
+                splashColor: AppTheme.transparentColor,
+                highlightColor: AppTheme.transparentColor,
+                icon: Icon(CupertinoIcons.clear),
+              ),
+            ),
+            Expanded(
+              child: CupertinoDatePicker(
+                onDateTimeChanged: onDateTimeChanged,
+                mode: CupertinoDatePickerMode.date,
+                initialDateTime: DateTime.now(),
+                minimumYear: DateTime.now().year,
+                maximumYear: DateTime.now().year + 5,
+              ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              style: TextButton.styleFrom(
+                backgroundColor: AppTheme.secondaryColor,
+                primary: AppTheme.secondaryColor,
+                onSurface: AppTheme.secondaryColor,
+                shadowColor: AppTheme.secondaryColor,
+                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+              child: Text(
+                AppMessage.labelDone,
+                style: TextStyle(
+                  color: AppTheme.primaryTextColor,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            ),
+          ],
         );
       },
     );

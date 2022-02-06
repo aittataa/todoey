@@ -28,8 +28,8 @@ class HomeProvider extends GetConnect {
 
   static const String _tbl_collections_data_query = '''
   INSERT INTO $_tbl_collections($_title, $_description, $_date)VALUES
-       ('Collection 1', 'Description 1', '2022-02-06 13:00:00'),
-       ('Collection 2', 'Description 2', '2022-02-07 14:11:00'),
+       ('Take The Kids', '', '2022-02-06 13:00:00'),
+       ('Go To The Store', 'Get The Grocery and The House Stuff', '2022-02-07 14:11:00'),
        ('Collection 3', 'Description 3', '2022-02-07 15:13:00'),
        ('Collection 4', 'Description 4', '2022-02-08 15:45:00'),
        ('Collection 5', 'Description 5', '2022-02-08 16:28:00'),

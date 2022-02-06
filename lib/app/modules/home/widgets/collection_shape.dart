@@ -8,24 +8,17 @@ import '../controllers/home_controller.dart';
 import '../models/collection.dart';
 import 'checked_box.dart';
 
-class CollectionShape extends StatefulWidget {
+class CollectionShape extends StatelessWidget {
   final HomeController controller;
   final Collection collection;
-  final Function()? onPressed;
+  final Function()? onUpdate;
+  final Function()? onDelete;
   const CollectionShape({
     required this.controller,
     required this.collection,
-    this.onPressed,
+    this.onUpdate,
+    this.onDelete,
   });
-  @override
-  State<CollectionShape> createState() => _CollectionShapeState(controller, collection, onPressed);
-}
-
-class _CollectionShapeState extends State<CollectionShape> {
-  final HomeController controller;
-  final Collection collection;
-  final Function()? onDelete;
-  _CollectionShapeState(this.controller, this.collection, this.onDelete);
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +37,7 @@ class _CollectionShapeState extends State<CollectionShape> {
           minLeadingWidth: 0,
           leading: CheckedBox(
             state: collection.status,
-            onTap: () async {
-              setState(() => {collection.updateStatus});
-              final data = await controller.updateCollection(collection);
-              print(data);
-            },
+            onTap: onUpdate,
           ),
           title: Text(
             "${collection.title}",

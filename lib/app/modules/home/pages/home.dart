@@ -59,11 +59,11 @@ class _HomeState extends State<Home> {
               },
               groupSeparatorBuilder: (DateTime date) {
                 if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1)) {
-                  return DateItem(label: "Yesterday", date: date);
+                  return DateItem(label: AppMessage.labelYesterday, date: date);
                 } else if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day)) {
-                  return DateItem(label: "Today", date: date);
+                  return DateItem(label: AppMessage.labelToday, date: date);
                 } else if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1)) {
-                  return DateItem(label: "Tomorrow", date: date);
+                  return DateItem(label: AppMessage.labelTomorrow, date: date);
                 } else {
                   return DateItem(label: AppFunction.dateShape(date), date: date);
                 }
@@ -72,7 +72,12 @@ class _HomeState extends State<Home> {
                 return CollectionShape(
                   controller: controller,
                   collection: collection,
-                  onPressed: () async {
+                  onUpdate: () async {
+                    setState(() => {collection.updateStatus});
+                    final data = await controller.updateCollection(collection);
+                    print(data);
+                  },
+                  onDelete: () async {
                     final int id = collection.id!;
                     setState(() => {print(collections.remove(collection))});
                     final data = await controller.deleteCollection(id);

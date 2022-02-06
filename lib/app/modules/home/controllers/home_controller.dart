@@ -28,13 +28,11 @@ class HomeController extends GetxController {
 
   updateCollection(Collection collection) async {
     final response = await _provider.updateCollection(collection);
-    _getCollections;
     return response;
   }
 
   deleteCollection(int id) async {
     final response = await _provider.deleteCollection(id);
-    //_getCollections;
     return response;
   }
 }
