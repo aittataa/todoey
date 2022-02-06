@@ -37,7 +37,7 @@ class _HomeState extends State<Home> {
       body: Builder(builder: (context) {
         final bool state = controller.state.value;
         if (state) {
-          return BouncePoint();
+          return BouncePoint(state: false);
         } else {
           final List<Collection> collections = controller.collections;
           final bool isEmpty = collections.isEmpty;
