@@ -8,7 +8,7 @@ import 'app/modules/home/pages/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // AppFunction.configureDependencies;
+  AppFunction.configureDependencies;
   runApp(ToDoList());
 }
 
