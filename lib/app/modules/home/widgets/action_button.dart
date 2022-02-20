@@ -7,7 +7,6 @@ class ActionButton extends StatelessWidget {
   final IconData? icon;
   final Color backgroundColor;
   final Color foregroundColor;
-  final double circular;
   final Function()? onPressed;
 
   const ActionButton({
@@ -15,7 +14,6 @@ class ActionButton extends StatelessWidget {
     this.icon,
     required this.backgroundColor,
     required this.foregroundColor,
-    this.circular = 100,
     this.onPressed,
   }) : super(key: key);
 
@@ -25,15 +23,14 @@ class ActionButton extends StatelessWidget {
       onPressed: onPressed,
       child: Image.asset(
         AppMessage.appLogo,
-        height: 40,
         color: AppTheme.primaryIconColor,
+        height: 40,
       ),
       elevation: 1,
       highlightElevation: 1,
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
       splashColor: AppTheme.transparentColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(circular)),
     );
   }
 }

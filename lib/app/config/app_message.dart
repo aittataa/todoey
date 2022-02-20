@@ -16,4 +16,5 @@ class AppMessage {
   static const String labelScheduled = "Scheduled";
   static const String hintTitle = "Type Task Title";
   static const String hintDescription = "Description (OPTIONAL)";
+  static const String noDataFound = "No Data Found";
 }
