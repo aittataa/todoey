@@ -65,6 +65,7 @@ class HomeProvider extends GetConnect {
       _tbl_collections,
       collection.toMap(),
     );
+    print(collection.toMap());
     return response;
   }
 
