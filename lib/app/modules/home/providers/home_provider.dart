@@ -26,17 +26,15 @@ class HomeProvider extends GetConnect {
       $_collection_id INTEGER DEFAULT 0
   );''';
 
-  static const String _tbl_collections_data_query = '''
+  static String _tbl_collections_data_query = '''
   INSERT INTO $_tbl_collections($_title, $_description, $_date)VALUES
-       ('Take The Kids', '', '2022-02-06 13:00:00'),
-       ('Go To The Store', 'Get The Grocery and The House Stuff', '2022-02-07 14:11:00'),
-       ('Collection 3', 'Description 3', '2022-02-07 15:13:00'),
-       ('Collection 4', 'Description 4', '2022-02-08 15:45:00'),
-       ('Collection 5', 'Description 5', '2022-02-08 16:28:00'),
-       ('Collection 6', 'Description 6', '2022-02-09 13:09:00'),
-       ('Collection 7', 'Description 7', '2022-02-05 17:36:00'),
-       ('Collection 8', 'Description 8', '2022-02-01 18:40:00'),
-       ('Collection 9', 'Description 9', '2022-02-02 19:55:00');
+       ('Collection 1', 'Description 1', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 3)}'),
+       ('Collection 2', 'Description 2', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 2)}'),
+       ('Collection 3', 'Description 3', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1)}'),
+       ('Collection 4', 'Description 4', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day)}'),
+       ('Collection 5', 'Description 5', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1)}'),
+       ('Collection 6', 'Description 6', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2)}'),
+       ('Collection 7', 'Description 7', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 3)}');
   ''';
 
   Future<Database> get _database async {
@@ -45,7 +43,7 @@ class HomeProvider extends GetConnect {
       version: 1,
       onCreate: (db, version) async {
         await db.execute(_tbl_collections_query);
-        //await db.execute(_tbl_collections_data_query);
+        await db.execute(_tbl_collections_data_query);
       },
     );
   }
