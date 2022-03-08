@@ -24,11 +24,11 @@ class DateItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(25),
         ),
         child: Text(
-          "${label}",
+          "$label",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: AppTheme.textColor,
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

@@ -35,7 +35,7 @@ class DateShape extends StatelessWidget {
               label,
               style: TextStyle(
                 color: AppTheme.primaryTextColor,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(width: 10),

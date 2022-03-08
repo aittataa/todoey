@@ -32,8 +32,7 @@ class FieldText extends StatelessWidget {
         maxLines: maxLines,
         style: TextStyle(
           color: AppTheme.primaryTextColor.withOpacity(.75),
-          fontWeight: FontWeight.w900,
-          letterSpacing: 1,
+          fontWeight: FontWeight.bold,
         ),
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -42,7 +41,6 @@ class FieldText extends StatelessWidget {
           hintStyle: TextStyle(
             color: AppTheme.primaryTextColor.withOpacity(.5),
             fontWeight: FontWeight.bold,
-            letterSpacing: 1,
           ),
         ),
       ),

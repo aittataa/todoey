@@ -22,7 +22,7 @@ class EmptyBox extends StatelessWidget {
           AppMessage.noDataFound,
           style: TextStyle(
             color: AppTheme.secondaryTextColor,
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ],

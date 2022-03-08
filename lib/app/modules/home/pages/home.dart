@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
                   },
                   onDelete: () async {
                     final int id = collection.id!;
-                    setState(() => {print(collections.remove(collection))});
+                    setState(() => {collections.remove(collection)});
                     final data = await controller.deleteCollection(id);
                     setState(() => {print(data)});
                   },

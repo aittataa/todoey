@@ -43,8 +43,7 @@ class CollectionShape extends StatelessWidget {
             "${collection.title}",
             style: TextStyle(
               color: AppTheme.primaryTextColor,
-              fontWeight: FontWeight.w900,
-              letterSpacing: 1,
+              fontWeight: FontWeight.bold,
             ),
           ),
           subtitle: Row(
@@ -56,7 +55,6 @@ class CollectionShape extends StatelessWidget {
                   style: TextStyle(
                     color: AppTheme.secondaryTextColor,
                     fontWeight: FontWeight.bold,
-                    letterSpacing: 1,
                   ),
                 ),
               ),
@@ -64,8 +62,7 @@ class CollectionShape extends StatelessWidget {
                 "${AppFunction.timeShape(collection.date!)}",
                 style: TextStyle(
                   color: AppTheme.secondaryTextColor,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 1,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
