@@ -26,16 +26,16 @@ class HomeProvider extends GetConnect {
       $_collection_id INTEGER DEFAULT 0
   );''';
 
-  static String _tbl_collections_data_query = '''
-  INSERT INTO $_tbl_collections($_title, $_description, $_date)VALUES
-       ('Collection 1', 'Description 1', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 3)}'),
-       ('Collection 2', 'Description 2', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 2)}'),
-       ('Collection 3', 'Description 3', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1)}'),
-       ('Collection 4', 'Description 4', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day)}'),
-       ('Collection 5', 'Description 5', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1)}'),
-       ('Collection 6', 'Description 6', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2)}'),
-       ('Collection 7', 'Description 7', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 3)}');
-  ''';
+  // static String _tbl_collections_data_query = '''
+  // INSERT INTO $_tbl_collections($_title, $_description, $_date)VALUES
+  //      ('Collection 1', 'Description 1', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 3)}'),
+  //      ('Collection 2', 'Description 2', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 2)}'),
+  //      ('Collection 3', 'Description 3', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1)}'),
+  //      ('Collection 4', 'Description 4', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day)}'),
+  //      ('Collection 5', 'Description 5', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1)}'),
+  //      ('Collection 6', 'Description 6', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2)}'),
+  //      ('Collection 7', 'Description 7', '${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 3)}');
+  // ''';
 
   Future<Database> get _database async {
     return await openDatabase(
