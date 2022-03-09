@@ -43,7 +43,7 @@ class HomeProvider extends GetConnect {
       version: 1,
       onCreate: (db, version) async {
         await db.execute(_tbl_collections_query);
-        // await db.execute(_tbl_collections_data_query);
+        await db.execute(_tbl_collections_data_query);
       },
     );
   }
