@@ -76,25 +76,20 @@ class _HomeState extends State<Home> {
                     }
                   },
                   itemBuilder: (context, collection) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() => {AppFunction.animateToPage(1)});
+                    return CollectionShape(
+                      controller: controller,
+                      collection: collection,
+                      onUpdate: () async {
+                        setState(() => {collection.updateStatus});
+                        final data = await controller.updateCollection(collection);
+                        print(data);
                       },
-                      child: CollectionShape(
-                        controller: controller,
-                        collection: collection,
-                        onUpdate: () async {
-                          setState(() => {collection.updateStatus});
-                          final data = await controller.updateCollection(collection);
-                          print(data);
-                        },
-                        onDelete: () async {
-                          final int id = collection.id!;
-                          setState(() => {collections.remove(collection)});
-                          final data = await controller.deleteCollection(id);
-                          setState(() => {print(data)});
-                        },
-                      ),
+                      onDelete: () async {
+                        final int id = collection.id!;
+                        setState(() => {collections.remove(collection)});
+                        final data = await controller.deleteCollection(id);
+                        setState(() => {print(data)});
+                      },
                     );
                   },
                 );

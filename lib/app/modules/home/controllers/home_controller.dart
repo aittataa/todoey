@@ -5,8 +5,6 @@ import '../providers/home_provider.dart';
 
 class HomeController extends GetxController {
   final HomeProvider _provider = Get.put(HomeProvider());
-  var collections = <Collection>[].obs;
-  final state = false.obs;
 
   @override
   void onInit() {
@@ -14,21 +12,22 @@ class HomeController extends GetxController {
   }
 
   Future<List<Collection>> get getCollections async {
-    return await _provider.getCollections;
-  }
-
-  createCollection(Collection collection) async {
-    final response = await _provider.createCollection(collection);
+    final List<Collection> response = await _provider.getCollections;
     return response;
   }
 
-  updateCollection(Collection collection) async {
-    final response = await _provider.updateCollection(collection);
+  Future<int> createCollection(Collection collection) async {
+    final int response = await _provider.createCollection(collection);
     return response;
   }
 
-  deleteCollection(int id) async {
-    final response = await _provider.deleteCollection(id);
+  Future<int> updateCollection(Collection collection) async {
+    final int response = await _provider.updateCollection(collection);
+    return response;
+  }
+
+  Future<int> deleteCollection(int id) async {
+    final int response = await _provider.deleteCollection(id);
     return response;
   }
 }

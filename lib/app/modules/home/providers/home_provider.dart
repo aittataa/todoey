@@ -45,7 +45,7 @@ class HomeProvider extends GetConnect {
       version: 1,
       onCreate: (db, version) async {
         await db.execute(_tbl_collections_query);
-        await db.execute(_tbl_collections_data_query);
+        //await db.execute(_tbl_collections_data_query);
       },
     );
   }
@@ -59,18 +59,18 @@ class HomeProvider extends GetConnect {
     return collectionsFromMap(response);
   }
 
-  Future createCollection(Collection collection) async {
+  Future<int> createCollection(Collection collection) async {
     final db = await _database;
-    final response = await db.insert(
+    final int response = await db.insert(
       _tbl_collections,
       collection.toMap(),
     );
     return response;
   }
 
-  Future updateCollection(Collection collection) async {
+  Future<int> updateCollection(Collection collection) async {
     final db = await _database;
-    final response = await db.update(
+    final int response = await db.update(
       _tbl_collections,
       collection.toMap(),
       where: "$_id = ?",
@@ -79,9 +79,9 @@ class HomeProvider extends GetConnect {
     return response;
   }
 
-  Future deleteCollection(int id) async {
+  Future<int> deleteCollection(int id) async {
     final db = await _database;
-    final response = await db.delete(
+    final int response = await db.delete(
       _tbl_collections,
       where: "$_id = ?",
       whereArgs: [id],
