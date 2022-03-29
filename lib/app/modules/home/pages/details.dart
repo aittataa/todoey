@@ -6,35 +6,46 @@ import '../../../config/app_message.dart';
 import '../../../config/app_theme.dart';
 import '../controllers/home_controller.dart';
 import '../models/collection.dart';
-import '../widgets/action_button.dart';
 import '../widgets/date_shape.dart';
 import '../widgets/field_text.dart';
+import '../widgets/floating_button.dart';
 
 class Details extends StatefulWidget {
   final HomeController controller;
-  const Details({Key? key, required this.controller}) : super(key: key);
+  final bool state;
+  final Collection? collection;
+  const Details({Key? key, required this.controller, this.state = false, this.collection}) : super(key: key);
   @override
-  State<Details> createState() => _DetailsState(controller);
+  State<Details> createState() => _DetailsState(controller, state, collection);
 }
 
 class _DetailsState extends State<Details> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descController = TextEditingController();
   final HomeController controller;
-  _DetailsState(this.controller);
+  final bool state;
+  final Collection? collection;
+  _DetailsState(this.controller, this.state, this.collection);
 
-  late DateTime selectedDate;
-  late int stateDate;
+  late bool visible = true;
+  late DateTime selectedDate = DateTime.now();
+  late int stateDate = -1;
 
   @override
   void initState() {
     super.initState();
     selectedDate = DateTime.now();
     stateDate = -1;
+    // if (state) {
+    //   titleController.text = collection!.title!;
+    //   descController.text = collection!.description!;
+    //   titleController.text = collection!.title!;
+    // }
   }
 
   @override
   Widget build(BuildContext context) {
+    visible = MediaQuery.of(context).viewInsets.bottom == 0;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -52,10 +63,11 @@ class _DetailsState extends State<Details> {
         ),
         title: Text(AppMessage.newTask),
       ),
-      floatingActionButton: ActionButton(
+      floatingActionButton: FloatingButton(
+        visible: visible,
         backgroundColor: AppTheme.secondaryColor,
         foregroundColor: AppTheme.primaryIconColor,
-        onPressed: () async {
+        onPress: () async {
           final String title = titleController.text;
           final String desc = descController.text;
           if (title.isNotEmpty || desc.isNotEmpty) {

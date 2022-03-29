@@ -11,18 +11,14 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _getCollections;
   }
 
-  get _getCollections async {
-    state.value = true;
-    collections.value = await _provider.getCollections;
-    state.value = false;
+  Future<List<Collection>> get getCollections async {
+    return await _provider.getCollections;
   }
 
   createCollection(Collection collection) async {
     final response = await _provider.createCollection(collection);
-    _getCollections;
     return response;
   }
 
