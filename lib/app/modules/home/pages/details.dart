@@ -12,20 +12,16 @@ import '../widgets/floating_button.dart';
 
 class Details extends StatefulWidget {
   final HomeController controller;
-  final bool state;
-  final Collection? collection;
-  const Details({Key? key, required this.controller, this.state = false, this.collection}) : super(key: key);
+  const Details({Key? key, required this.controller}) : super(key: key);
   @override
-  State<Details> createState() => _DetailsState(controller, state, collection);
+  State<Details> createState() => _DetailsState(controller);
 }
 
 class _DetailsState extends State<Details> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descController = TextEditingController();
   final HomeController controller;
-  final bool state;
-  final Collection? collection;
-  _DetailsState(this.controller, this.state, this.collection);
+  _DetailsState(this.controller);
 
   late bool visible = true;
   late DateTime selectedDate = DateTime.now();
@@ -36,11 +32,6 @@ class _DetailsState extends State<Details> {
     super.initState();
     selectedDate = DateTime.now();
     stateDate = -1;
-    // if (state) {
-    //   titleController.text = collection!.title!;
-    //   descController.text = collection!.description!;
-    //   titleController.text = collection!.title!;
-    // }
   }
 
   @override
