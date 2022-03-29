@@ -12,15 +12,16 @@ dependencies:
   flutter_spinkit: 5.1.0
   intl: 0.17.0
   grouped_list: 4.2.0
-  flutter:
+  flutter_speed_dial: 5.0.0+1
+  flutter: 
     sdk: flutter
 
 dev_dependencies: 
   flutter_test: 
     sdk: flutter
 
-flutter:
-  uses-material-design: true
-  assets:
+flutter: 
+  assets: 
     - assets/
+  uses-material-design: true
 

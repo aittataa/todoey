@@ -35,7 +35,7 @@ class FloatingButton extends StatelessWidget {
       child: Image.asset(
         AppMessage.appLogo,
         color: AppTheme.primaryIconColor,
-        height: 50,
+        height: 40,
       ),
     );
   }
