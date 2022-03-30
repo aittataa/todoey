@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'app/config/app_function.dart';
+import 'app/config/app_message.dart';
 import 'app/config/app_theme.dart';
 import 'app/modules/home/pages/splash.dart';
 
@@ -18,7 +19,7 @@ class ToDoList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      // title: AppMessage.appTitle,
+      title: AppMessage.appTitle,
       theme: AppTheme.themeData,
       home: Splash(),
     );
