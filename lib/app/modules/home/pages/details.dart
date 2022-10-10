@@ -103,7 +103,7 @@ class _DetailsState extends State<Details> {
                     color: AppTheme.primaryColor,
                     onTap: () {
                       stateDate = 1;
-                      selectedDate = DateTime.now().add(const Duration(days: 1));
+                      selectedDate = DateTime.now().add(1.days);
                       setState(() {});
                     },
                   ),
@@ -117,7 +117,14 @@ class _DetailsState extends State<Details> {
                       AppFunction.pickScheduledDate(
                         context,
                         onDateTimeChanged: (DateTime date) {
-                          selectedDate = DateTime.utc(date.year, date.month, date.day, DateTime.now().hour, DateTime.now().minute, DateTime.now().second);
+                          selectedDate = DateTime.utc(
+                            date.year,
+                            date.month,
+                            date.day,
+                            DateTime.now().hour,
+                            DateTime.now().minute,
+                            DateTime.now().second,
+                          );
                         },
                       );
                       setState(() {});
