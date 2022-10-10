@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names
 
+import "package:flutter/foundation.dart";
 import "package:get/get.dart";
 import "package:path/path.dart";
 import "package:sqflite/sqflite.dart";
@@ -45,7 +46,9 @@ class HomeProvider extends GetConnect {
       version: 1,
       onCreate: (Database db, int version) async {
         await db.execute(_tbl_collections_query);
-        // await db.execute(_tbl_collections_data_query);
+        if (kDebugMode) {
+          await db.execute(_tbl_collections_data_query);
+        }
       },
     );
   }
@@ -74,7 +77,7 @@ class HomeProvider extends GetConnect {
       _tbl_collections,
       collection.toMap(),
       where: "$_id = ?",
-      whereArgs: [collection.id],
+      whereArgs: <Object?>[collection.id],
     );
     return response;
   }
@@ -84,7 +87,7 @@ class HomeProvider extends GetConnect {
     final int response = await db.delete(
       _tbl_collections,
       where: "$_id = ?",
-      whereArgs: [id],
+      whereArgs: <Object?>[id],
     );
     return response;
   }
