@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
 
-import 'app/config/app_function.dart';
-import 'app/config/app_message.dart';
-import 'app/config/app_theme.dart';
-import 'app/modules/home/pages/splash.dart';
+import "app/config/app_function.dart";
+import "app/config/app_message.dart";
+import "app/config/app_theme.dart";
+import "app/modules/home/pages/splash.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   AppFunction.configureDependencies;
-  runApp(ToDoList());
+  runApp(const ToDoList());
 }
 
 class ToDoList extends StatelessWidget {
@@ -21,7 +21,7 @@ class ToDoList extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: AppMessage.appTitle,
       theme: AppTheme.themeData,
-      home: Splash(),
+      home: const Splash(),
     );
   }
 }

@@ -1,14 +1,14 @@
-collectionsFromMap(map) {
-  return List<Collection>.from(map.map((value) => Collection.fromMap(value)));
+collectionsFromMap(List<Map<String, dynamic>> map) {
+  return List<Collection>.from(map.map((Map<String, dynamic> value) => Collection.fromMap(value)));
 }
 
 class Collection {
-  final int? id;
-  final String? title;
-  final String? description;
-  final DateTime? date;
+  late int? id;
+  late String? title;
+  late String? description;
+  late DateTime? date;
   late bool status;
-  final int collectionId;
+  late int collectionId;
 
   Collection({
     this.id,
@@ -24,7 +24,7 @@ class Collection {
       id: map["id"],
       title: map["title"],
       description: map["description"],
-      date: DateTime.parse(map['date']),
+      date: DateTime.parse(map["date"]),
       status: map["status"] == 1,
       collectionId: map["collection_id"],
     );
@@ -40,5 +40,5 @@ class Collection {
     };
   }
 
-  get updateStatus => {status = !status};
+  get updateStatus => <bool>{status = !status};
 }

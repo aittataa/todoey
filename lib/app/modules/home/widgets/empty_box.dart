@@ -1,15 +1,18 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:to_do_list/app/config/app_message.dart';
-import 'package:to_do_list/app/config/app_theme.dart';
+import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
+import "package:to_do_list/app/config/app_message.dart";
+import "package:to_do_list/app/config/app_theme.dart";
 
 class EmptyBox extends StatelessWidget {
-  const EmptyBox({Key? key}) : super(key: key);
+  final String label;
+  const EmptyBox({super.key, required this.label});
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
         Center(
           child: Image.asset(
             AppMessage.appLogo,
@@ -17,12 +20,13 @@ class EmptyBox extends StatelessWidget {
             height: 100,
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 10),
         Text(
-          AppMessage.noDataFound,
-          style: TextStyle(
+          label,
+          style: const TextStyle(
             color: AppTheme.secondaryTextColor,
             fontWeight: FontWeight.bold,
+            letterSpacing: .5,
           ),
         ),
       ],

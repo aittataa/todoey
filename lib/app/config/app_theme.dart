@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class AppTheme {
   AppTheme._();
@@ -12,7 +12,7 @@ class AppTheme {
   static const Color backgroundColor = Color(0xFFF6F6F6);
   static const Color primaryBackColor = Color(0xFFFFFFFF);
   static const Color secondaryBackColor = Color(0xFF000000);
-  static const Color TextFieldBackColor = Color(0xFF000000);
+  static const Color textFieldBackColor = Color(0xFF000000);
 
   /// TODO : Others
   static const Color transparentColor = Color(0x00000000);
@@ -40,9 +40,10 @@ class AppTheme {
         iconTheme: IconThemeData(
           color: secondaryIconColor.withOpacity(.65),
         ),
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
           color: primaryTextColor,
           fontWeight: FontWeight.bold,
+          letterSpacing: .5,
           fontSize: 20,
         ),
       ),

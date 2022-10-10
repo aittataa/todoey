@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
 
-import '../../../config/app_constant.dart';
-import '../../../config/app_function.dart';
-import '../../../config/app_theme.dart';
-import '../controllers/home_controller.dart';
-import '../models/collection.dart';
-import 'checked_box.dart';
+import "../../../config/app_constant.dart";
+import "../../../config/app_function.dart";
+import "../../../config/app_theme.dart";
+import "../controllers/home_controller.dart";
+import "../models/collection.dart";
+import "checked_box.dart";
 
 class CollectionShape extends StatelessWidget {
   final HomeController controller;
@@ -14,6 +14,7 @@ class CollectionShape extends StatelessWidget {
   final Function()? onUpdate;
   final Function()? onDelete;
   const CollectionShape({
+    super.key,
     required this.controller,
     required this.collection,
     this.onUpdate,
@@ -25,11 +26,11 @@ class CollectionShape extends StatelessWidget {
     return Opacity(
       opacity: collection.status ? .5 : 1,
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
           color: AppTheme.primaryBackColor,
           borderRadius: BorderRadius.circular(20),
-          boxShadow: [AppConstant.boxShadow],
+          boxShadow: <BoxShadow>[AppConstant.boxShadow],
         ),
         child: ListTile(
           dense: true,
@@ -41,26 +42,26 @@ class CollectionShape extends StatelessWidget {
           ),
           title: Text(
             "${collection.title}",
-            style: TextStyle(
+            style: const TextStyle(
               color: AppTheme.primaryTextColor,
               fontWeight: FontWeight.bold,
             ),
           ),
           subtitle: Row(
-            children: [
+            children: <Widget>[
               Expanded(
                 child: Text(
                   "${collection.description}",
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppTheme.secondaryTextColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               Text(
-                "${AppFunction.timeShape(collection.date!)}",
-                style: TextStyle(
+                AppFunction.timeShape(collection.date!),
+                style: const TextStyle(
                   color: AppTheme.secondaryTextColor,
                   fontWeight: FontWeight.bold,
                 ),
@@ -73,7 +74,7 @@ class CollectionShape extends StatelessWidget {
             color: AppTheme.primaryColor,
             highlightColor: AppTheme.transparentColor,
             splashColor: AppTheme.transparentColor,
-            icon: Icon(CupertinoIcons.delete_solid),
+            icon: const Icon(CupertinoIcons.delete_solid),
           ),
         ),
       ),

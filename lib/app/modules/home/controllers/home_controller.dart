@@ -1,15 +1,10 @@
-import 'package:get/get.dart';
+import "package:get/get.dart";
 
-import '../models/collection.dart';
-import '../providers/home_provider.dart';
+import "../models/collection.dart";
+import "../providers/home_provider.dart";
 
 class HomeController extends GetxController {
   final HomeProvider _provider = Get.put(HomeProvider());
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Future<List<Collection>> get getCollections async {
     final List<Collection> response = await _provider.getCollections;

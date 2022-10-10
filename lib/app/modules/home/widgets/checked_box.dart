@@ -1,23 +1,24 @@
-import 'package:flutter/cupertino.dart';
+import "package:flutter/cupertino.dart";
 
-import '../../../config/app_constant.dart';
-import '../../../config/app_theme.dart';
+import "../../../config/app_constant.dart";
+import "../../../config/app_theme.dart";
 
 class CheckedBox extends StatelessWidget {
   final bool state;
   final Function()? onTap;
+
   const CheckedBox({
-    Key? key,
+    super.key,
     this.state = true,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         width: 50,
         height: 50,
         child: AnimatedContainer(

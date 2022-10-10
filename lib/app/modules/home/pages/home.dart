@@ -1,57 +1,74 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:grouped_list/grouped_list.dart';
+import "dart:developer";
 
-import '../../../config/app_function.dart';
-import '../../../config/app_message.dart';
-import '../../../config/app_theme.dart';
-import '../controllers/home_controller.dart';
-import '../models/collection.dart';
-import '../widgets/bounce_point.dart';
-import '../widgets/collection_shape.dart';
-import '../widgets/date_item.dart';
-import '../widgets/empty_box.dart';
-import '../widgets/floating_button.dart';
+import "package:flutter/material.dart";
+import "package:flutter/rendering.dart";
+import "package:get/get.dart";
+import "package:grouped_list/grouped_list.dart";
+
+import "../../../config/app_function.dart";
+import "../../../config/app_message.dart";
+import "../../../config/app_theme.dart";
+import "../controllers/home_controller.dart";
+import "../models/collection.dart";
+import "../widgets/bounce_point.dart";
+import "../widgets/collection_shape.dart";
+import "../widgets/date_item.dart";
+import "../widgets/empty_box.dart";
+import "../widgets/floating_button.dart";
 
 class Home extends StatefulWidget {
-  final HomeController controller;
-  const Home({Key? key, required this.controller}) : super(key: key);
+  const Home({super.key});
   @override
-  State<Home> createState() => _HomeState(controller);
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  final HomeController controller;
-  _HomeState(this.controller);
+  final HomeController controller = Get.put(HomeController());
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   late bool visible = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(AppMessage.appTitle)),
+      appBar: AppBar(title: const Text(AppMessage.appTitle)),
       floatingActionButton: FloatingButton(
         visible: visible,
         backgroundColor: AppTheme.mainColor,
         foregroundColor: AppTheme.primaryIconColor,
         onPress: () {
-          setState(() => {AppFunction.animateToPage(1)});
+          AppFunction.animateToPage(1);
+          setState(() {});
         },
       ),
       body: NotificationListener<UserScrollNotification>(
-        onNotification: (notification) {
+        onNotification: (UserScrollNotification notification) {
           if (notification.direction == ScrollDirection.forward) {
-            if (!visible) setState(() => {visible = true});
+            if (!visible) visible = true;
           } else if (notification.direction == ScrollDirection.reverse) {
-            if (visible) setState(() => {visible = false});
+            if (visible) visible = false;
           }
+          setState(() {});
           return true;
         },
         child: FutureBuilder<List<Collection>>(
           future: controller.getCollections,
-          builder: (_, snapshot) {
-            if (snapshot.hasData) {
-              if (snapshot.data!.isNotEmpty) {
+          builder: (_, AsyncSnapshot<List<Collection>> snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                return const SizedBox();
+              case ConnectionState.waiting:
+                return const BouncePoint();
+              case ConnectionState.active:
+                return const SizedBox();
+              case ConnectionState.done:
+                if (snapshot.hasError) return const EmptyBox(label: AppMessage.labelSomethingWrong);
+                if (!snapshot.hasData) return const EmptyBox(label: AppMessage.labelNoDataFound);
+                if (snapshot.data!.isEmpty) return const EmptyBox(label: AppMessage.labelEmptyList);
                 final List<Collection> collections = snapshot.data!;
                 return GroupedListView<dynamic, DateTime>(
                   shrinkWrap: true,
@@ -59,44 +76,40 @@ class _HomeState extends State<Home> {
                   physics: const BouncingScrollPhysics(),
                   elements: collections,
                   order: GroupedListOrder.ASC,
-                  groupBy: (collection) {
+                  groupBy: (dynamic collection) {
                     return DateTime.utc(collection.date.year, collection.date.month, collection.date.day);
                   },
-                  groupComparator: (a, b) => b.compareTo(a),
+                  groupComparator: (DateTime a, DateTime b) => b.compareTo(a),
                   itemComparator: (a, b) => b.date.compareTo(a.date),
                   groupSeparatorBuilder: (DateTime date) {
-                    if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1)) {
-                      return DateItem(label: AppMessage.labelYesterday, date: date);
-                    } else if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day)) {
+                    if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day)) {
                       return DateItem(label: AppMessage.labelToday, date: date);
-                    } else if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1)) {
-                      return DateItem(label: AppMessage.labelTomorrow, date: date);
-                    } else {
-                      return DateItem(label: AppFunction.dateShape(date), date: date);
                     }
+                    return DateItem(label: AppFunction.dateShape(date), date: date);
                   },
-                  itemBuilder: (context, collection) {
+                  itemBuilder: (BuildContext context, dynamic collection) {
                     return CollectionShape(
                       controller: controller,
                       collection: collection,
                       onUpdate: () async {
-                        setState(() => {collection.updateStatus});
-                        final data = await controller.updateCollection(collection);
-                        print(data);
+                        collection.updateStatus;
+                        final int data = await controller.updateCollection(collection);
+                        log(data.toString());
+                        setState(() {});
                       },
                       onDelete: () async {
                         final int id = collection.id!;
-                        setState(() => {collections.remove(collection)});
-                        final data = await controller.deleteCollection(id);
-                        setState(() => {print(data)});
+                        collections.remove(collection);
+                        final int data = await controller.deleteCollection(id);
+                        log(data.toString());
+                        setState(() {});
                       },
                     );
                   },
                 );
-              }
-              return const EmptyBox();
+              default:
+                return const BouncePoint();
             }
-            return const BouncePoint();
           },
         ),
       ),

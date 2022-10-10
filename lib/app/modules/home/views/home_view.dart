@@ -1,23 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
 
-import '../../../config/app_constant.dart';
-import '../controllers/home_controller.dart';
-import '../pages/details.dart';
-import '../pages/home.dart';
+import "../../../config/app_constant.dart";
+import "../pages/details.dart";
+import "../pages/home.dart";
 
 class HomeView extends StatelessWidget {
-  final HomeController controller = Get.put(HomeController());
-
+  const HomeView({super.key});
   @override
   Widget build(BuildContext context) {
     return Material(
       child: PageView(
         controller: AppConstant.pageController,
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          Home(controller: controller),
-          Details(controller: controller),
+        physics: const NeverScrollableScrollPhysics(),
+        children: const <Widget>[
+          Home(),
+          Details(),
         ],
       ),
     );

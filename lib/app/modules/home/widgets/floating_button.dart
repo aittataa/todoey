@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import "package:flutter/cupertino.dart";
+import "package:flutter_speed_dial/flutter_speed_dial.dart";
 
-import '../../../config/app_constant.dart';
-import '../../../config/app_message.dart';
-import '../../../config/app_theme.dart';
+import "../../../config/app_constant.dart";
+import "../../../config/app_message.dart";
+import "../../../config/app_theme.dart";
 
 class FloatingButton extends StatelessWidget {
   final bool visible;
@@ -12,12 +12,12 @@ class FloatingButton extends StatelessWidget {
   final Function()? onPress;
 
   const FloatingButton({
-    Key? key,
+    super.key,
     this.visible = true,
     required this.backgroundColor,
     required this.foregroundColor,
     this.onPress,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

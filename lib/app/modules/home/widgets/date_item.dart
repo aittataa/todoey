@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
 
-import '../../../config/app_theme.dart';
+import "../../../config/app_theme.dart";
 
 class DateItem extends StatelessWidget {
   final String label;
@@ -17,16 +17,17 @@ class DateItem extends StatelessWidget {
     return Center(
       child: Container(
         width: 120,
-        margin: EdgeInsets.all(5),
-        padding: EdgeInsets.all(10),
+        alignment: Alignment.center,
+        margin: const EdgeInsets.all(5),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: AppTheme.mainColor,
           borderRadius: BorderRadius.circular(25),
         ),
         child: Text(
-          "$label",
+          label,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: AppTheme.textColor,
             fontWeight: FontWeight.bold,
           ),

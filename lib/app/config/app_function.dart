@@ -1,24 +1,24 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
+import "package:flutter/services.dart";
+import "package:get/get.dart";
+import "package:intl/intl.dart";
 
-import 'app_constant.dart';
-import 'app_message.dart';
-import 'app_theme.dart';
+import "app_constant.dart";
+import "app_message.dart";
+import "app_theme.dart";
 
 class AppFunction {
   AppFunction._();
 
-  static String dateShape(DateTime date) => DateFormat('MMM dd, yyyy').format(date);
-  static String timeShape(DateTime date) => DateFormat('HH:mm').format(date);
+  static String dateShape(DateTime date) => DateFormat("MMM dd, yyyy").format(date);
+  static String timeShape(DateTime date) => DateFormat("HH:mm").format(date);
 
-  static pickScheduledDate(context, {required Function(DateTime) onDateTimeChanged}) {
+  static pickScheduledDate(BuildContext context, {required Function(DateTime) onDateTimeChanged}) {
     return showModalBottomSheet(
       context: context,
       backgroundColor: AppTheme.primaryBackColor,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(25),
           topRight: Radius.circular(25),
@@ -26,16 +26,16 @@ class AppFunction {
       ),
       builder: (BuildContext context) {
         return Column(
-          children: [
+          children: <Widget>[
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () => Navigator.pop(context),
-                padding: EdgeInsets.all(25),
+                padding: const EdgeInsets.all(25),
                 color: AppTheme.secondaryIconColor,
                 splashColor: AppTheme.transparentColor,
                 highlightColor: AppTheme.transparentColor,
-                icon: Icon(CupertinoIcons.clear),
+                icon: const Icon(CupertinoIcons.clear),
               ),
             ),
             Expanded(
@@ -50,14 +50,12 @@ class AppFunction {
             TextButton(
               onPressed: () => Navigator.pop(context),
               style: TextButton.styleFrom(
-                backgroundColor: AppTheme.secondaryColor,
-                primary: AppTheme.secondaryColor,
-                onSurface: AppTheme.secondaryColor,
+                foregroundColor: AppTheme.secondaryColor, backgroundColor: AppTheme.secondaryColor, disabledForegroundColor: AppTheme.secondaryColor.withOpacity(0.38),
                 shadowColor: AppTheme.secondaryColor,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               ),
-              child: Text(
+              child: const Text(
                 AppMessage.labelDone,
                 style: TextStyle(
                   color: AppTheme.primaryTextColor,
@@ -76,17 +74,17 @@ class AppFunction {
       title,
       message,
       backgroundColor: AppTheme.mainColor,
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       titleText: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           color: AppTheme.secondaryTextColor,
           fontWeight: FontWeight.bold,
         ),
       ),
       messageText: Text(
         message,
-        style: TextStyle(
+        style: const TextStyle(
           color: AppTheme.secondaryTextColor,
           fontWeight: FontWeight.bold,
         ),
@@ -106,7 +104,7 @@ class AppFunction {
   static get configureDependencies {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         systemNavigationBarColor: AppTheme.transparentColor,
         systemNavigationBarDividerColor: AppTheme.transparentColor,
         systemNavigationBarIconBrightness: Brightness.dark,
