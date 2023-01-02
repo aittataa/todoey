@@ -7,8 +7,8 @@ class AppConstant {
   AppConstant._();
 
   /// TODO : Screen Controller
-  static PageController pageController = PageController();
-  static int pageIndex = 0;
+  static PageController controller = PageController();
+  static int index = 0;
 
   /// TODO : Screen Size
   static double screenWidth = Get.width;
@@ -29,7 +29,7 @@ class AppConstant {
 
   /// TODO : BoxShadow
   static BoxShadow boxShadow = BoxShadow(
-    color: AppTheme.shadowColor.withOpacity(.1),
+    color: AppTheme.shadow_color.withOpacity(.1),
     blurRadius: 10,
     spreadRadius: .1,
   );

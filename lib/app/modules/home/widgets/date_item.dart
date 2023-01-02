@@ -21,14 +21,14 @@ class DateItem extends StatelessWidget {
         margin: const EdgeInsets.all(5),
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: AppTheme.mainColor,
+          color: AppTheme.main_color_1,
           borderRadius: BorderRadius.circular(25),
         ),
         child: Text(
           label,
           textAlign: TextAlign.center,
           style: const TextStyle(
-            color: AppTheme.textColor,
+            color: AppTheme.text_color_1,
             fontWeight: FontWeight.bold,
           ),
         ),

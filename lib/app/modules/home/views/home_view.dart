@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 
 import "../../../config/app_constant.dart";
-import "../pages/details.dart";
-import "../pages/home.dart";
+import "../pages/details_page.dart";
+import "../pages/home_page.dart";
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -10,11 +10,11 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: PageView(
-        controller: AppConstant.pageController,
+        controller: AppConstant.controller,
         physics: const NeverScrollableScrollPhysics(),
         children: const <Widget>[
-          Home(),
-          Details(),
+          HomePage(),
+          DetailsPage(),
         ],
       ),
     );

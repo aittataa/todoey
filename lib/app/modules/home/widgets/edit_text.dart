@@ -2,12 +2,12 @@ import "package:flutter/material.dart";
 
 import "../../../config/app_theme.dart";
 
-class FieldText extends StatelessWidget {
+class EditText extends StatelessWidget {
   final TextEditingController? controller;
   final String hint;
   final int maxLines;
 
-  const FieldText({
+  const EditText({
     super.key,
     this.controller,
     required this.hint,
@@ -21,19 +21,19 @@ class FieldText extends StatelessWidget {
       autofocus: true,
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.next,
-      cursorColor: AppTheme.mainColor,
+      cursorColor: AppTheme.main_color_1,
       maxLines: maxLines,
-      style: TextStyle(
-        color: AppTheme.primaryTextColor.withOpacity(.75),
+      style: const TextStyle(
+        color: AppTheme.text_color_1,
         fontWeight: FontWeight.bold,
         letterSpacing: .5,
       ),
       decoration: InputDecoration(
         border: InputBorder.none,
-        contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+        contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         hintText: hint,
-        hintStyle: TextStyle(
-          color: AppTheme.primaryTextColor.withOpacity(.5),
+        hintStyle: const TextStyle(
+          color: AppTheme.text_color_3,
           fontWeight: FontWeight.bold,
           letterSpacing: .5,
         ),
