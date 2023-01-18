@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import 'app/config/app_function.dart';
 import 'app/config/app_message.dart';
 import 'app/config/app_theme.dart';
 import 'app/modules/home/pages/splash.dart';
 import 'app/routes/app_pages.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  AppFunction.configureDependencies;
   runApp(const Todoey());
 }
 
