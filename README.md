@@ -1,6 +1,6 @@
-# app
+# todoey
 
-CheckList.
+To-Do List App.
 
 ## Getting Started
 

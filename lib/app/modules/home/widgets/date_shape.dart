@@ -39,7 +39,7 @@ class DateShape extends StatelessWidget {
             Text(
               label,
               style: const TextStyle(
-                color: AppTheme.text_color_2,
+                color: AppTheme.primaryTextColor,
                 fontWeight: FontWeight.bold,
                 letterSpacing: .5,
               ),
@@ -58,7 +58,7 @@ class DateShape extends StatelessWidget {
                 ),
                 child: const Icon(
                   CupertinoIcons.checkmark,
-                  color: AppTheme.icon_color_2,
+                  color: AppTheme.primaryIconColor,
                   size: 15,
                 ),
               ),

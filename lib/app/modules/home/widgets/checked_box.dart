@@ -27,12 +27,12 @@ class CheckedBox extends StatelessWidget {
           curve: AppConstant.curve,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: state ? AppTheme.main_color_1 : AppTheme.transparent_color,
-            border: Border.all(width: 2, color: AppTheme.main_color_1),
+            color: state ? AppTheme.mainColor : AppTheme.transparentColor,
+            border: Border.all(width: 2, color: AppTheme.mainColor),
           ),
           child: Icon(
             CupertinoIcons.checkmark_alt,
-            color: state ? AppTheme.icon_color_2 : AppTheme.transparent_color,
+            color: state ? AppTheme.primaryIconColor : AppTheme.transparentColor,
           ),
         ),
       ),

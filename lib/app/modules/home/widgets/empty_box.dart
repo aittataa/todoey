@@ -1,7 +1,8 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import "../../../config/app_message.dart";
-import "../../../config/app_theme.dart";
+
+import '../../../config/app_message.dart';
+import '../../../config/app_theme.dart';
 
 class EmptyBox extends StatelessWidget {
   final String label;
@@ -24,7 +25,7 @@ class EmptyBox extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
-            color: AppTheme.text_color_3,
+            color: AppTheme.secondaryTextColor,
             fontWeight: FontWeight.bold,
             letterSpacing: .5,
           ),

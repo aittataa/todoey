@@ -14,52 +14,78 @@ class AppFunction {
   static String dateShape(DateTime date) => DateFormat("MMM dd, yyyy").format(date);
   static String timeShape(DateTime date) => DateFormat("HH:mm").format(date);
 
-  static Future<DateTime> pickDate(BuildContext context) async {
-    final DateTime initialDate = DateTime.now();
-    final DateTime newDate = await showDatePicker(
-          context: context,
-          firstDate: DateTime(DateTime.now().year - 100),
-          initialDate: initialDate,
-          lastDate: DateTime(DateTime.now().year + 100),
-          builder: (_, Widget? child) {
-            return Theme(
-              data: Theme.of(context).copyWith(
-                colorScheme: const ColorScheme.light(
-                  primary: AppTheme.main_color_1,
-                  onPrimary: AppTheme.text_color_1,
-                  onSurface: AppTheme.text_color_2,
-                ),
-                textButtonTheme: TextButtonThemeData(
-                  style: TextButton.styleFrom(
-                    foregroundColor: AppTheme.main_color_1,
-                  ),
+  static pickScheduledDate(BuildContext context, {required Function(DateTime) onDateTimeChanged}) {
+    return showModalBottomSheet(
+      context: context,
+      backgroundColor: AppTheme.primaryBackColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25),
+          topRight: Radius.circular(25),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return Column(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () => Navigator.pop(context),
+                padding: const EdgeInsets.all(25),
+                color: AppTheme.secondaryIconColor,
+                splashColor: AppTheme.transparentColor,
+                highlightColor: AppTheme.transparentColor,
+                icon: const Icon(CupertinoIcons.clear),
+              ),
+            ),
+            Expanded(
+              child: CupertinoDatePicker(
+                onDateTimeChanged: onDateTimeChanged,
+                mode: CupertinoDatePickerMode.date,
+                initialDateTime: DateTime.now(),
+                minimumYear: DateTime.now().year,
+                maximumYear: DateTime.now().year + 5,
+              ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              style: TextButton.styleFrom(
+                foregroundColor: AppTheme.secondaryColor, backgroundColor: AppTheme.secondaryColor, disabledForegroundColor: AppTheme.secondaryColor.withOpacity(0.38),
+                shadowColor: AppTheme.secondaryColor,
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+              child: const Text(
+                AppMessage.labelDone,
+                style: TextStyle(
+                  color: AppTheme.primaryTextColor,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              child: child!,
-            );
-          },
-        ) ??
-        initialDate;
-    return newDate;
+            ),
+          ],
+        );
+      },
+    );
   }
 
   static snackBar({required String title, required String message}) {
     return Get.snackbar(
       title,
       message,
-      backgroundColor: AppTheme.main_color_1,
+      backgroundColor: AppTheme.mainColor,
       margin: const EdgeInsets.all(10),
       titleText: Text(
         title,
         style: const TextStyle(
-          color: AppTheme.text_color_3,
+          color: AppTheme.secondaryTextColor,
           fontWeight: FontWeight.bold,
         ),
       ),
       messageText: Text(
         message,
         style: const TextStyle(
-          color: AppTheme.text_color_3,
+          color: AppTheme.secondaryTextColor,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -67,9 +93,9 @@ class AppFunction {
   }
 
   static animateToPage(int index) {
-    AppConstant.index = index;
-    AppConstant.controller.animateToPage(
-      AppConstant.index,
+    AppConstant.pageIndex = index;
+    AppConstant.pageController.animateToPage(
+      AppConstant.pageIndex,
       duration: AppConstant.durationPage,
       curve: AppConstant.curve,
     );
@@ -79,10 +105,10 @@ class AppFunction {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        systemNavigationBarColor: AppTheme.transparent_color,
-        systemNavigationBarDividerColor: AppTheme.transparent_color,
+        systemNavigationBarColor: AppTheme.transparentColor,
+        systemNavigationBarDividerColor: AppTheme.transparentColor,
         systemNavigationBarIconBrightness: Brightness.dark,
-        statusBarColor: AppTheme.transparent_color,
+        statusBarColor: AppTheme.transparentColor,
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.dark,
       ),

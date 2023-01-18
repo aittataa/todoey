@@ -1,20 +1,18 @@
-// ignore_for_file: camel_case_types
+import 'package:flutter/material.dart';
 
-import "package:flutter/material.dart";
-import 'app/config/app_function.dart';
-import "app/config/app_message.dart";
-import "app/config/app_theme.dart";
-import "app/modules/home/pages/splash_page.dart";
-import "package:get/get.dart";
+import 'package:get/get.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  AppFunction.configureDependencies;
-  runApp(const iCheck());
+import 'app/config/app_message.dart';
+import 'app/config/app_theme.dart';
+import 'app/modules/home/pages/splash.dart';
+import 'app/routes/app_pages.dart';
+
+void main() {
+  runApp(const Todoey());
 }
 
-class iCheck extends StatelessWidget {
-  const iCheck({super.key});
+class Todoey extends StatelessWidget {
+  const Todoey({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,9 @@ class iCheck extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: AppMessage.appTitle,
       theme: AppTheme.themeData,
-      home: const SplashPage(),
+      home: Builder(builder: (_) {
+        return const Splash();
+      }),
     );
   }
 }

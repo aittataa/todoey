@@ -28,7 +28,7 @@ class CollectionShape extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
-          color: AppTheme.back_color_2,
+          color: AppTheme.primaryBackColor,
           borderRadius: BorderRadius.circular(20),
           boxShadow: <BoxShadow>[AppConstant.boxShadow],
         ),
@@ -43,7 +43,7 @@ class CollectionShape extends StatelessWidget {
           title: Text(
             "${collection.title}",
             style: const TextStyle(
-              color: AppTheme.text_color_2,
+              color: AppTheme.primaryTextColor,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -54,7 +54,7 @@ class CollectionShape extends StatelessWidget {
                   "${collection.description}",
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                    color: AppTheme.text_color_3,
+                    color: AppTheme.secondaryTextColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -62,7 +62,7 @@ class CollectionShape extends StatelessWidget {
               Text(
                 AppFunction.timeShape(collection.date!),
                 style: const TextStyle(
-                  color: AppTheme.text_color_3,
+                  color: AppTheme.secondaryTextColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -71,9 +71,9 @@ class CollectionShape extends StatelessWidget {
           trailing: IconButton(
             onPressed: onDelete,
             padding: EdgeInsets.zero,
-            color: AppTheme.main_color_2,
-            highlightColor: AppTheme.transparent_color,
-            splashColor: AppTheme.transparent_color,
+            color: AppTheme.primaryColor,
+            highlightColor: AppTheme.transparentColor,
+            splashColor: AppTheme.transparentColor,
             icon: const Icon(CupertinoIcons.delete_solid),
           ),
         ),

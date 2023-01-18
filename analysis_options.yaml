@@ -3,8 +3,16 @@ include: package:flutter_lints/flutter.yaml
 linter:
   rules:
     avoid_print: true
+<<<<<<< HEAD
     await_only_futures: true
     always_specify_types: true
     prefer_double_quotes: true
     prefer_single_quotes: false
+=======
+    prefer_single_quotes: false
+    always_specify_types: true
+    prefer_double_quotes: true
+    await_only_futures: true
+    no_logic_in_create_state: true
+>>>>>>> 87a8936 (commit)
 

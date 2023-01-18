@@ -1,9 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.icheck.app">
    <application
         android:label="app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+=======
+    package="com.todoey.android">
+   <application
+        android:label="Todoey"
+        android:name="${applicationName}"
+        android:icon="@mipmap/app_icon_round">
+>>>>>>> 87a8936 (commit)
         <activity
             android:name=".MainActivity"
             android:exported="true"
