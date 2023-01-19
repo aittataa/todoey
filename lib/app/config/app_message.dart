@@ -7,7 +7,10 @@ class AppMessage {
   static const String appIconRound = "assets/app_icon_round.png";
 
   /// TODO : App Texts
-  static const String appTitle = "CheckList";
+  static const String appTitle = "Checkmate";
+  // static const String appTitle = "ZenTask";
+  // static const String appTitle = "Todoey";
+  // static const String appTitle = "CheckList";
   static const String newTask = "New Task";
   static const String labelDone = "Done";
   static const String labelEmptyList = "Empty List";
